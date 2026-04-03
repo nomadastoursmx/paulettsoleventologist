@@ -6037,36 +6037,64 @@
         }
 
         function calcSuggestedPrice() {
-            const container = document.getElementById('catCostsContainer');
-            const rows = container.querySelectorAll('div');
-            const persons = parseInt(document.getElementById('catPersonsEstimate').value) || 1;
-            let totalCostPerPerson = 0;
-            let breakdown = [];
+    const container = document.getElementById('catCostsContainer');
+    const rows = container.querySelectorAll('div');
+    const persons = parseInt(document.getElementById('catPersonsEstimate').value) || 1;
+    const marginPercent = parseFloat(document.getElementById('catMargin').value) || 0;
 
-            rows.forEach(row => {
-                const inputs = row.querySelectorAll('input');
-                const select = row.querySelector('select');
-                if (inputs.length < 2 || !select) return;
-                const desc = inputs[0].value || 'Costo';
-                const amt = parseFloat(inputs[1].value) || 0;
-                const tipo = select.value;
-                if (amt <= 0) return;
+    let totalCostPerPerson = 0;
+    let breakdown = [];
 
-                let cpp = 0, label = '';
-                if (tipo === 'total') {
-                    cpp = amt / persons;
-                    label = formatCurrency(amt) + ' ÷ ' + persons + ' pax = ' + formatCurrency(cpp) + '/persona';
-                } else if (tipo === 'persona') {
-                    cpp = amt;
-                    label = formatCurrency(amt) + '/persona';
-                } else if (tipo === 'servicio') {
-                    cpp = amt / persons;
-                    label = formatCurrency(amt) + '/servicio ÷ ' + persons + ' pax = ' + formatCurrency(cpp) + '/persona';
-                }
-                totalCostPerPerson += cpp;
-                breakdown.push({ desc, cpp, label });
-            });
+    rows.forEach(row => {
+        const inputs = row.querySelectorAll('input');
+        const select = row.querySelector('select');
+        if (inputs.length < 2 || !select) return;
 
+        const desc = inputs[0].value || 'Costo';
+        const amt = parseFloat(inputs[1].value) || 0;
+        const tipo = select.value;
+        if (amt <= 0) return;
+
+        let cpp = 0, label = '';
+
+        if (tipo === 'total') {
+            cpp = amt / persons;
+            label = formatCurrency(amt) + ' ÷ ' + persons + ' pax = ' + formatCurrency(cpp) + '/persona';
+        } else if (tipo === 'persona') {
+            cpp = amt;
+            label = formatCurrency(amt) + '/persona';
+        } else if (tipo === 'servicio') {
+            cpp = amt / persons;
+            label = formatCurrency(amt) + '/servicio ÷ ' + persons + ' pax = ' + formatCurrency(cpp) + '/persona';
+        }
+
+        totalCostPerPerson += cpp;
+        breakdown.push({ desc, cpp, label });
+    });
+
+    // ✅ COSTO TOTAL GRUPO
+    const totalCost = totalCostPerPerson * persons;
+
+    // ✅ MARGEN CORRECTO (PORCENTAJE REAL)
+    const totalMargin = totalCost * (marginPercent / 100);
+
+    // ✅ PRECIO FINAL
+    const finalPricePerPerson = (totalCost + totalMargin) / persons;
+
+    // 💰 OPCIONAL: margen por persona
+    const marginPerPerson = totalCostPerPerson * (marginPercent / 100);
+
+    // 📊 DEBUG / VISUAL
+    console.log("Costo por persona:", totalCostPerPerson);
+    console.log("Margen por persona:", marginPerPerson);
+    console.log("Precio final por persona:", finalPricePerPerson);
+    console.log("Total grupo:", totalCost);
+    console.log("Margen total:", totalMargin);
+
+    // 👉 AQUÍ puedes pintar resultados en pantalla si ya tienes IDs
+    // Ejemplo:
+    // document.getElementById("precioFinal").innerText = formatCurrency(finalPricePerPerson);
+}
             const margin = parseFloat(document.getElementById('catMargin').value) || 0;
             const withMargin = margin < 100 ? totalCostPerPerson / (1 - margin / 100) : totalCostPerPerson;
             const totalGroupCost = totalCostPerPerson * persons;
