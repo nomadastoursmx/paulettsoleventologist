@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Gestión - Nómadas Tours</title>
+    <title>Sistema de Gestión - Paulett Soul Eventologist</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
-            --primary: #047698;
-            --primary-dark: #03637d;
-            --secondary: #4cc9f0;
+            --primary: #a0285a;
+            --primary-dark: #7d1f47;
+            --secondary: #f4a0c0;
             --success: #4caf50;
             --warning: #ff9800;
             --danger: #f44336;
@@ -30,7 +30,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #047698 0%, #03637d 100%);
+            background: linear-gradient(135deg, #a0285a 0%, #7d1f47 100%);
             min-height: 100vh;
             color: var(--dark);
         }
@@ -116,7 +116,7 @@
         }
 
         .btn-secondary {
-            background: linear-gradient(45deg, #3a86ff, #047698);
+            background: linear-gradient(45deg, #c4607a, #a0285a);
             color: white;
         }
 
@@ -136,7 +136,7 @@
         }
 
         .btn-tools {
-            background: linear-gradient(45deg, #047698, #03637d);
+            background: linear-gradient(45deg, #a0285a, #7d1f47);
             color: white;
         }
 
@@ -194,7 +194,7 @@
         .form-group select:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(4, 118, 152, 0.1);
+            box-shadow: 0 0 0 3px rgba(160, 40, 90, 0.1);
         }
 
         .form-row {
@@ -216,7 +216,7 @@
         .search-box:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(4, 118, 152, 0.1);
+            box-shadow: 0 0 0 3px rgba(160, 40, 90, 0.1);
         }
 
         .summary-cards {
@@ -942,7 +942,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, #047698, #03637d);
+            background: linear-gradient(90deg, #a0285a, #7d1f47);
         }
 
         .tool-card:hover {
@@ -952,7 +952,7 @@
 
         .tool-icon {
             font-size: 3.5rem;
-            color: #047698;
+            color: #a0285a;
             margin-bottom: 20px;
         }
 
@@ -1021,7 +1021,7 @@
         }
 
         .view-toggle button:hover:not(.active) {
-            background: rgba(4, 118, 152, 0.1);
+            background: rgba(160, 40, 90, 0.1);
         }
 
         .filter-container {
@@ -1407,7 +1407,7 @@
             .quote-grid { grid-template-columns: 1fr !important; }
         }
         .quote-header-box {
-            background: linear-gradient(135deg, #047698, #03637d);
+            background: linear-gradient(135deg, #a0285a, #7d1f47);
             color: white;
             padding: 25px 30px;
             display: flex;
@@ -1416,7 +1416,7 @@
             gap: 15px;
         }
         .quote-section-title {
-            background: #047698;
+            background: #a0285a;
             color: white;
             padding: 8px 15px;
             font-weight: 600;
@@ -1518,15 +1518,92 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #a8a8a8;
         }
+
+        /* ===== CALENDAR VIEW ===== */
+        .calendar-view { display: none; margin-top: 20px; }
+        .calendar-view.active { display: block; }
+        .cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+        .cal-header h3 { font-size: 1.3rem; font-weight: 700; color: var(--dark); }
+        .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+        .cal-day-label { text-align: center; font-weight: 700; font-size: 0.75rem; color: var(--gray); padding: 8px 0; text-transform: uppercase; }
+        .cal-cell { min-height: 90px; background: white; border-radius: 8px; padding: 6px; border: 1px solid #f0f0f0; position: relative; }
+        .cal-cell.other-month { background: #fafafa; opacity: 0.5; }
+        .cal-cell.today { border: 2px solid var(--primary); }
+        .cal-date { font-size: 0.8rem; font-weight: 600; color: var(--gray); margin-bottom: 4px; }
+        .cal-cell.today .cal-date { color: var(--primary); font-weight: 800; }
+        .cal-event-chip { background: var(--primary); color: white; border-radius: 4px; font-size: 0.68rem; padding: 2px 5px; margin-bottom: 2px; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 600; }
+        .cal-event-chip.completed { background: var(--success); }
+        .cal-event-chip.catalog { background: #1976d2; }
+        @media(max-width:768px){ .cal-cell { min-height: 55px; } .cal-event-chip { font-size: 0.6rem; } }
+
+        /* ===== CHECKLIST ===== */
+        .checklist-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: var(--light); border-radius: 8px; margin-bottom: 8px; border-left: 3px solid var(--primary); transition: var(--transition); }
+        .checklist-item.done { opacity: 0.6; border-left-color: var(--success); background: #f0fff0; }
+        .checklist-item.done .chk-text { text-decoration: line-through; color: var(--gray); }
+        .checklist-item input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary); flex-shrink: 0; cursor: pointer; }
+        .chk-text { flex: 1; font-size: 0.9rem; word-break: break-word; }
+        .chk-due { font-size: 0.75rem; color: var(--gray); white-space: nowrap; }
+        .chk-due.overdue { color: var(--danger); font-weight: 700; }
+        .chk-actions { display: flex; gap: 4px; }
+
+        /* ===== LEADS / PIPELINE ===== */
+        .pipeline-board { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 10px; }
+        .pipeline-col { flex: 0 0 220px; background: #f8f9fa; border-radius: 12px; padding: 14px; }
+        .pipeline-col-title { font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+        .pipeline-card { background: white; border-radius: 8px; padding: 12px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.07); border-left: 4px solid var(--primary); cursor: grab; transition: var(--transition); }
+        .pipeline-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,.12); }
+        .pipeline-card .lead-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+        .pipeline-card .lead-event { font-size: 0.78rem; color: var(--gray); margin-bottom: 6px; }
+        .pipeline-card .lead-value { font-size: 0.85rem; font-weight: 700; color: var(--success); }
+        .pipeline-card .lead-date { font-size: 0.75rem; color: var(--gray); }
+        .lead-badge { font-size: 0.7rem; padding: 2px 7px; border-radius: 20px; font-weight: 700; display: inline-block; margin-bottom: 4px; }
+        .lead-badge.interesado { background: #e3f2fd; color: #1976d2; }
+        .lead-badge.cotizado { background: #fff8e1; color: #f57c00; }
+        .lead-badge.negociando { background: #fce4ec; color: #c2185b; }
+        .lead-badge.cerrado { background: #e8f5e9; color: #2e7d32; }
+        .lead-badge.perdido { background: #ffebee; color: #b71c1c; }
+
+        /* ===== PHOTO GALLERY ===== */
+        .event-gallery { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .event-gallery img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 2px solid #e9ecef; cursor: pointer; transition: var(--transition); }
+        .event-gallery img:hover { transform: scale(1.05); border-color: var(--primary); }
+
+        /* ===== SPECIAL MOMENT BADGE ===== */
+        .special-moment-badge { background: linear-gradient(45deg, #e91e63, #ff4081); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
+
+        /* ===== WHATSAPP REMINDER ===== */
+        .reminder-btn { background: linear-gradient(45deg, #25D366, #128C7E); color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; }
+        .reminder-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        /* ===== EVENT TYPE BADGE ===== */
+        .event-type-badge { padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: inline-block; margin-bottom: 6px; }
+        .event-type-badge.boda { background: #fce4ec; color: #880e4f; }
+        .event-type-badge.xv { background: #f3e5f5; color: #4a148c; }
+        .event-type-badge.cumpleanos { background: #fff8e1; color: #e65100; }
+        .event-type-badge.propuesta { background: #fce4ec; color: #b71c1c; }
+        .event-type-badge.corporativo { background: #e3f2fd; color: #0d47a1; }
+        .event-type-badge.aniversario { background: #fff3e0; color: #bf360c; }
+        .event-type-badge.bautizo { background: #e8f5e9; color: #1b5e20; }
+        .event-type-badge.graduacion { background: #e8eaf6; color: #1a237e; }
+        .event-type-badge.otro { background: #f5f5f5; color: #333; }
+
+        /* ===== GUEST COUNTER ===== */
+        .guest-counter { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+        .guest-stat { text-align: center; background: white; border-radius: 8px; padding: 8px 14px; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+        .guest-stat .gs-num { font-size: 1.3rem; font-weight: 800; color: var(--primary); }
+        .guest-stat .gs-label { font-size: 0.7rem; color: var(--gray); font-weight: 600; }
+
+        /* Section header pill */
+        .section-pill { display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(45deg, var(--primary), var(--primary-dark)); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-        <img src="https://drive.google.com/thumbnail?id=1So1MGQYQVnuFH4OyB1YgdPfhRn-BhI7D" alt="Logo Nómadas Tours" style="height: 150px; margin-right: 15px;">
+        <img src="https://drive.google.com/thumbnail?id=1So1MGQYQVnuFH4OyB1YgdPfhRn-BhI7D" alt="Logo Paulett Soul Eventologist" style="height: 150px; margin-right: 15px;">
             <div>
-                <h1>Sistema de Gestión - Nómadas Tours</h1>
-                <p>Administra viajes, clientes y pagos de forma profesional</p>
+                <h1>Sistema de Gestión - Paulett Soul Eventologist</h1>
+                <p>Administra eventos, clientes y pagos de forma profesional</p>
             </div>
         </div>
 
@@ -1541,10 +1618,10 @@
                     <i class="fas fa-home"></i> Dashboard
                 </button>
                 <button class="btn btn-primary" onclick="showNewTripModal()">
-                    <i class="fas fa-plus"></i> Nuevo Viaje
+                    <i class="fas fa-star"></i> Nuevo Evento
                 </button>
                 <button class="btn btn-secondary" onclick="showSection('tripregistry')">
-                    <i class="fas fa-suitcase-rolling"></i> Registro de Viajes
+                    <i class="fas fa-calendar-star"></i> Registro de Eventos
                 </button>
                 <button class="btn btn-secondary" onclick="showSection('clients')">
                     <i class="fas fa-users"></i> Gestión de Clientes
@@ -1554,6 +1631,9 @@
                 </button>
                 <button class="btn btn-secondary" onclick="showSection('whatsapp')">
                     <i class="fab fa-whatsapp"></i> WhatsApp
+                </button>
+                <button class="btn btn-secondary" onclick="showSection('leads')">
+                    <i class="fas fa-funnel-dollar"></i> Leads
                 </button>
                 <button class="btn btn-secondary" onclick="showSection('reports')">
                     <i class="fas fa-chart-bar"></i> Reportes
@@ -1567,7 +1647,7 @@
         <div class="content-area">
             <!-- Dashboard Section -->
             <div id="dashboard" class="section active">
-                <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar viajes o clientes..." onkeyup="filterTrips()">
+                <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar eventos o clientes..." onkeyup="filterTrips()">
                 
 
                 <div class="view-toggle">
@@ -1580,6 +1660,9 @@
                     <button id="filterToggleBtn" onclick="toggleFilters()">
                         <i class="fas fa-filter"></i> Filtros
                     </button>
+                    <button id="calViewBtn" onclick="setView('calendar')">
+                        <i class="fas fa-calendar-alt"></i> Calendario
+                    </button>
                 </div>
 
                 <div class="filter-container" id="filterContainer">
@@ -1591,9 +1674,9 @@
                     </div>
                     <div class="filter-row">
                         <div class="filter-group">
-                            <label for="filterDestination">Destino</label>
+                            <label for="filterDestination">Lugar</label>
                             <select id="filterDestination" onchange="applyFilters()">
-                                <option value="">Todos los destinos</option>
+                                <option value="">Todos los lugares</option>
                             </select>
                         </div>
                         <div class="filter-group">
@@ -1627,12 +1710,12 @@
                     <div class="sort-group">
                         <label for="sortBy">Ordenar por:</label>
                         <select id="sortBy" onchange="applySorting()">
-                            <option value="name">Nombre del viaje</option>
-                            <option value="destination">Destino</option>
-                            <option value="startDate">Fecha de inicio</option>
+                            <option value="name">Nombre del evento</option>
+                            <option value="destination">Lugar</option>
+                            <option value="startDate">Fecha del evento</option>
                             <option value="endDate">Fecha de fin</option>
                             <option value="price">Precio</option>
-                            <option value="clients">Número de clientes</option>
+                            <option value="clients">Número de asistentes</option>
                             <option value="profit">Ganancia</option>
                         </select>
                     </div>
@@ -1652,12 +1735,12 @@
                     <table id="tripsTable">
                         <thead>
                             <tr>
-                                <th class="sortable" onclick="sortTrips('name')">Nombre del Viaje</th>
-                                <th class="sortable" onclick="sortTrips('destination')">Destino</th>
+                                <th class="sortable" onclick="sortTrips('name')">Nombre del Evento</th>
+                                <th class="sortable" onclick="sortTrips('destination')">Lugar</th>
                                 <th class="sortable" onclick="sortTrips('startDate')">Fechas</th>
                                 <th class="sortable" onclick="sortTrips('price')">Precio</th>
                                 <th class="sortable" onclick="sortTrips('status')">Estado</th>
-                                <th class="sortable" onclick="sortTrips('clients')">Clientes</th>
+                                <th class="sortable" onclick="sortTrips('clients')">Asistentes</th>
                                 <th class="sortable" onclick="sortTrips('profit')">Ganancia</th>
                                 <th>Acciones</th>
                             </tr>
@@ -1665,6 +1748,10 @@
                         <tbody id="tripsTableBody">
                         </tbody>
                     </table>
+                </div>
+
+                <!-- Calendar View -->
+                <div class="calendar-view" id="calendarContainer">
                 </div>
             </div>
 
@@ -1694,7 +1781,7 @@
                                 <th class="sortable" onclick="sortGlobalClients('phone')">Teléfono</th>
                                 <th class="sortable" onclick="sortGlobalClients('email')">Email</th>
                                 <th class="sortable" onclick="sortGlobalClients('address')">Dirección</th>
-                                <th class="sortable" onclick="sortGlobalClients('food')">Alimentos</th>
+                                <th class="sortable" onclick="sortGlobalClients('food')">Consideraciones</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -1787,7 +1874,7 @@
                 </div>
                 
                 <div style="margin-bottom: 30px;">
-                    <h3>Gráfica de Ingresos Mensuales</h3>
+                    <h3>Gráfica de Ingresos Mensuales por Evento</h3>
                     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: var(--shadow);">
                         <canvas id="monthlyChart" width="400" height="200"></canvas>
                     </div>
@@ -1880,10 +1967,33 @@
             </div>
         </div>
 
+
+        <!-- Leads / Pipeline Section -->
+        <div id="leads" class="section">
+            <div style="display:flex;align-items:center;gap:15px;margin-bottom:20px;flex-wrap:wrap;">
+                <button class="btn btn-secondary" onclick="showSection('dashboard')" style="padding:8px 18px;">
+                    <i class="fas fa-arrow-left"></i> Regresar
+                </button>
+                <div>
+                    <h2 style="margin:0;"><i class="fas fa-funnel-dollar" style="color:var(--primary);"></i> Pipeline de Leads</h2>
+                    <p style="margin:4px 0 0;color:var(--gray);font-size:0.9rem;">Seguimiento de prospectos y oportunidades</p>
+                </div>
+                <div style="margin-left:auto;">
+                    <button class="btn btn-primary" onclick="showNewLeadModal()">
+                        <i class="fas fa-plus"></i> Nuevo Lead
+                    </button>
+                </div>
+            </div>
+            <!-- KPI bar -->
+            <div id="leadsKpiBar" style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px;"></div>
+            <!-- Board -->
+            <div class="pipeline-board" id="pipelineBoard"></div>
+        </div>
+
         <!-- Trip Registry Section -->
         <div id="tripregistry" class="section">
             <!-- Header band -->
-            <div style="background:linear-gradient(135deg,#047698 0%,#03637d 60%,#0d7e9e 100%);border-radius:16px;padding:28px 30px;margin-bottom:28px;color:white;position:relative;overflow:hidden;">
+            <div style="background:linear-gradient(135deg,#a0285a 0%,#7d1f47 60%,#0d7e9e 100%);border-radius:16px;padding:28px 30px;margin-bottom:28px;color:white;position:relative;overflow:hidden;">
                 <div style="position:absolute;right:-30px;top:-30px;width:140px;height:140px;background:rgba(255,255,255,.06);border-radius:50%;"></div>
                 <div style="position:absolute;right:40px;bottom:-50px;width:200px;height:200px;background:rgba(255,255,255,.04);border-radius:50%;"></div>
                 <div style="display:flex;align-items:center;gap:15px;flex-wrap:wrap;position:relative;">
@@ -1891,7 +2001,7 @@
                         <i class="fas fa-arrow-left"></i> Regresar
                     </button>
                     <div>
-                        <h2 style="margin:0;font-size:1.5rem;font-weight:700;"><i class="fas fa-book-open"></i> Catálogo de Viajes</h2>
+                        <h2 style="margin:0;font-size:1.5rem;font-weight:700;"><i class="fas fa-book-open"></i> Catálogo de Eventos</h2>
                         <p style="margin:4px 0 0;opacity:.8;font-size:0.9rem;">Fichas logísticas — archivo interno de referencia</p>
                     </div>
                     <div style="margin-left:auto;">
@@ -1906,7 +2016,7 @@
             <div style="background:white;border-radius:12px;padding:16px 20px;box-shadow:var(--shadow);margin-bottom:22px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
                 <div style="position:relative;flex:1;min-width:220px;">
                     <i class="fas fa-search" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--gray);"></i>
-                    <input type="text" id="regSearch" placeholder="Buscar viaje, destino, categoría..." oninput="filterTripRegistry()"
+                    <input type="text" id="regSearch" placeholder="Buscar evento, destino, categoría..." oninput="filterTripRegistry()"
                         style="width:100%;padding:10px 10px 10px 38px;border:2px solid #e9ecef;border-radius:8px;font-family:'Poppins',sans-serif;font-size:0.9rem;">
                 </div>
                 <select id="regStatusFilter" onchange="filterTripRegistry()"
@@ -1945,7 +2055,7 @@
                         <div class="form-group" style="display:none;"><input type="text" id="gdriveLogo"></div>
                         <div class="form-group">
                             <label for="companyName"><i class="fas fa-tag"></i> Nombre de la Empresa</label>
-                            <input type="text" id="companyName" value="Nómadas Tours" oninput="updateQuotePreview()">
+                            <input type="text" id="companyName" value="Paulett Soul Eventologist" oninput="updateQuotePreview()">
                         </div>
                         <div class="form-group">
                             <label for="companyPhone"><i class="fas fa-phone"></i> Teléfono</label>
@@ -1973,7 +2083,7 @@
 
                     <!-- Cliente -->
                     <div style="background:white;border-radius:12px;box-shadow:var(--shadow);overflow:hidden;">
-                        <div style="background:linear-gradient(135deg,#047698,#03637d);padding:12px 20px;display:flex;align-items:center;gap:10px;">
+                        <div style="background:linear-gradient(135deg,#a0285a,#7d1f47);padding:12px 20px;display:flex;align-items:center;gap:10px;">
                             <i class="fas fa-user" style="color:rgba(255,255,255,.8);"></i>
                             <span style="color:white;font-weight:600;font-size:0.95rem;">Datos del Cliente</span>
                         </div>
@@ -1995,27 +2105,27 @@
                         </div>
                     </div>
 
-                    <!-- Viaje -->
+                    <!-- Evento -->
                     <div style="background:white;border-radius:12px;box-shadow:var(--shadow);overflow:hidden;">
                         <div style="background:linear-gradient(135deg,#1976d2,#1565c0);padding:12px 20px;display:flex;align-items:center;gap:10px;">
-                            <i class="fas fa-suitcase-rolling" style="color:rgba(255,255,255,.8);"></i>
-                            <span style="color:white;font-weight:600;font-size:0.95rem;">Datos del Viaje</span>
+                            <i class="fas fa-calendar-alt" style="color:rgba(255,255,255,.8);"></i>
+                            <span style="color:white;font-weight:600;font-size:0.95rem;">Datos del Evento</span>
                         </div>
                         <div style="padding:18px;">
                             <div class="form-group">
-                                <label for="quoteSelectTrip"><i class="fas fa-book-open"></i> Cargar desde Catálogo</label>
+                                <label for="quoteSelectTrip"><i class="fas fa-book-open"></i> Cargar desde Catálogo de Eventos</label>
                                 <select id="quoteSelectTrip" onchange="loadTripIntoQuote()" style="background:#f8f9fa;">
                                     <option value="">— Cotización manual —</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="quoteTripName">Nombre del Viaje / Destino *</label>
-                                <input type="text" id="quoteTripName" placeholder="Ej: Cancún Todo Incluido" oninput="updateQuotePreview()">
+                                <label for="quoteTripName">Nombre del Evento *</label>
+                                <input type="text" id="quoteTripName" placeholder="Ej: Boda Romántica en Jardín" oninput="updateQuotePreview()">
                             </div>
                             <div class="form-row">
                                 <div class="form-group" style="margin-bottom:0;">
-                                    <label for="quoteDates">Fechas del Viaje</label>
-                                    <input type="text" id="quoteDates" placeholder="15–20 Mar 2026" oninput="updateQuotePreview()">
+                                    <label for="quoteDates">Fecha del Evento</label>
+                                    <input type="text" id="quoteDates" placeholder="Ej: 15 de Agosto 2026" oninput="updateQuotePreview()">
                                 </div>
                                 <div class="form-group" style="margin-bottom:0;">
                                     <label for="quotePersons">Personas</label>
@@ -2057,7 +2167,7 @@
                                     <label style="font-weight:600;color:#2e7d32;display:block;margin-bottom:8px;"><i class="fas fa-check-circle"></i> Incluye</label>
                                     <div id="includesContainer">
                                         <div style="display:flex;gap:6px;margin-bottom:6px;">
-                                            <input type="text" class="include-item" placeholder="Transporte..." oninput="updateQuotePreview()" style="flex:1;padding:8px;border:2px solid #e9ecef;border-radius:8px;font-family:'Poppins',sans-serif;font-size:0.85rem;">
+                                            <input type="text" class="include-item" placeholder="Traslados..." oninput="updateQuotePreview()" style="flex:1;padding:8px;border:2px solid #e9ecef;border-radius:8px;font-family:'Poppins',sans-serif;font-size:0.85rem;">
                                             <button type="button" class="btn btn-small btn-danger" onclick="removeIncludeItem(this)"><i class="fas fa-times"></i></button>
                                         </div>
                                     </div>
@@ -2067,7 +2177,7 @@
                                     <label style="font-weight:600;color:#c62828;display:block;margin-bottom:8px;"><i class="fas fa-times-circle"></i> No Incluye</label>
                                     <div id="excludesContainer">
                                         <div style="display:flex;gap:6px;margin-bottom:6px;">
-                                            <input type="text" class="exclude-item" placeholder="Gastos pers..." oninput="updateQuotePreview()" style="flex:1;padding:8px;border:2px solid #e9ecef;border-radius:8px;font-family:'Poppins',sans-serif;font-size:0.85rem;">
+                                            <input type="text" class="exclude-item" placeholder="Gastos extras..." oninput="updateQuotePreview()" style="flex:1;padding:8px;border:2px solid #e9ecef;border-radius:8px;font-family:'Poppins',sans-serif;font-size:0.85rem;">
                                             <button type="button" class="btn btn-small btn-danger" onclick="removeExcludeItem(this)"><i class="fas fa-times"></i></button>
                                         </div>
                                     </div>
@@ -2086,7 +2196,7 @@
                         <div style="padding:18px;">
                             <div class="form-group">
                                 <label for="quotePromoText">Texto Promocional</label>
-                                <textarea id="quotePromoText" rows="3" placeholder="Descripción atractiva del paquete..." oninput="updateQuotePreview()"></textarea>
+                                <textarea id="quotePromoText" rows="3" placeholder="Descripción atractiva del evento..." oninput="updateQuotePreview()"></textarea>
                             </div>
                             <div class="form-group" style="margin-bottom:12px;">
                                 <label for="quoteNotes">Condiciones / Notas</label>
@@ -2128,7 +2238,7 @@
                             <div id="quotePrintArea" style="font-family:'Poppins',sans-serif;">
                                 <div style="padding:40px;text-align:center;color:var(--gray);">
                                     <i class="fas fa-file-invoice" style="font-size:3rem;opacity:.3;display:block;margin-bottom:12px;"></i>
-                                    Completa el formulario para ver la vista previa
+                                    Completa el formulario para ver la vista previa de la cotización
                                 </div>
                             </div>
                         </div>
@@ -2141,18 +2251,18 @@
         <div id="catalogTripModal" class="modal">
             <div class="modal-content large" style="max-width:750px;">
                 <div class="modal-header">
-                    <h2 id="catalogTripModalTitle">Nueva Ficha de Viaje</h2>
+                    <h2 id="catalogTripModalTitle">Nueva Ficha de Evento</h2>
                     <span class="close" onclick="closeCatalogTripModal()">×</span>
                 </div>
                 <form id="catalogTripForm">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="catName">Nombre del Viaje *</label>
-                            <input type="text" id="catName" required placeholder="Ej: Cancún Todo Incluido">
+                            <label for="catName">Nombre del Evento *</label>
+                            <input type="text" id="catName" required placeholder="Ej: Boda Jardín Romántico">
                         </div>
                         <div class="form-group">
-                            <label for="catDestination">Destino *</label>
-                            <input type="text" id="catDestination" required placeholder="Ej: Cancún, Q.R.">
+                            <label for="catDestination">Lugar / Venue *</label>
+                            <input type="text" id="catDestination" required placeholder="Ej: Tuxtla Gutiérrez, Chiapas">
                         </div>
                     </div>
                     <div class="form-row">
@@ -2180,7 +2290,7 @@
                             <input type="text" id="catDuration" placeholder="Ej: 5 días / 4 noches">
                         </div>
                         <div class="form-group">
-                            <label for="catCapacity">Capacidad máx. personas</label>
+                            <label for="catCapacity">Capacidad máx. asistentes</label>
                             <input type="number" id="catCapacity" min="1" placeholder="Ej: 40">
                         </div>
                         <div class="form-group">
@@ -2194,7 +2304,7 @@
                         <h4 style="margin-bottom:16px;color:var(--primary);display:flex;align-items:center;gap:8px;"><i class="fas fa-calculator"></i> Calculadora de Precio Sugerido</h4>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="catPersonsEstimate">👥 Personas estimadas</label>
+                                <label for="catPersonsEstimate">👥 Asistentes estimados</label>
                                 <input type="number" id="catPersonsEstimate" min="1" value="20" oninput="calcSuggestedPrice()">
                             </div>
                             <div class="form-group">
@@ -2205,7 +2315,7 @@
 
                         <!-- Costos -->
                         <div style="margin-bottom:16px;">
-                            <label style="font-weight:600;margin-bottom:8px;display:block;color:#333;"><i class="fas fa-receipt" style="color:var(--primary);"></i> Desglose de costos del viaje</label>
+                            <label style="font-weight:600;margin-bottom:8px;display:block;color:#333;"><i class="fas fa-receipt" style="color:var(--primary);"></i> Desglose de costos del evento</label>
                             <div style="display:grid;grid-template-columns:2fr 1fr 1.2fr auto;gap:8px;margin-bottom:6px;padding:0 4px;font-size:0.72rem;color:var(--gray);font-weight:700;letter-spacing:.04em;text-transform:uppercase;"><span>Concepto</span><span>Monto $</span><span>Tipo</span><span></span></div>
                             <div id="catCostsContainer"></div>
                             <button type="button" class="btn btn-small btn-secondary" style="margin-top:6px;" onclick="addCatCostRow()"><i class="fas fa-plus"></i> Agregar costo</button>
@@ -2245,7 +2355,7 @@
                                 </tr>
                                 <tr style="border-bottom:1px solid #f0f0f0;">
                                     <td style="padding:5px 0;color:#666;">+ Margen (<span id="catMarginLabel">20</span>%)</td>
-                                    <td style="text-align:right;font-weight:600;color:#047698;" id="catWithMargin"></td>
+                                    <td style="text-align:right;font-weight:600;color:#a0285a;" id="catWithMargin"></td>
                                 </tr>
                                 <tr id="catTaxBreakdownRow" style="border-bottom:1px solid #f0f0f0;display:none;">
                                     <td colspan="2" id="catTaxBreakdown" style="padding:5px 0;font-size:0.82rem;color:#888;"></td>
@@ -2268,25 +2378,25 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="catDescription">Descripción del viaje</label>
-                        <textarea id="catDescription" rows="3" placeholder="Descripción general del paquete..."></textarea>
+                        <label for="catDescription">Descripción del evento</label>
+                        <textarea id="catDescription" rows="3" placeholder="Descripción general del evento..."></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="catLogistics">Logística / Itinerario detallado</label>
+                        <label for="catLogistics">Logística / Cronograma detallado</label>
                         <textarea id="catLogistics" rows="5" placeholder="Día 1: Salida desde... a las...&#10;Día 2: Visita a...&#10;..."></textarea>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="catTransport">Transporte</label>
-                            <input type="text" id="catTransport" placeholder="Ej: Autobús Ejecutivo ADO">
+                            <label for="catTransport">Traslados</label>
+                            <input type="text" id="catTransport" placeholder="Ej: Transporte privado incluido">
                         </div>
                         <div class="form-group">
-                            <label for="catAccommodation">Hospedaje</label>
-                            <input type="text" id="catAccommodation" placeholder="Ej: Hotel Gran Caribe 4 estrellas">
+                            <label for="catAccommodation">Venue / Salón</label>
+                            <input type="text" id="catAccommodation" placeholder="Ej: Jardín Quinta Las Flores">
                         </div>
                         <div class="form-group">
-                            <label for="catMeals">Alimentación</label>
-                            <input type="text" id="catMeals" placeholder="Ej: Desayuno incluido">
+                            <label for="catMeals">Catering / Menú</label>
+                            <input type="text" id="catMeals" placeholder="Ej: Cena de 3 tiempos">
                         </div>
                     </div>
                     <div class="form-group">
@@ -2306,7 +2416,7 @@
                     </div>
                     <div class="form-group">
                         <label for="catPromoText">Texto Promocional</label>
-                        <textarea id="catPromoText" rows="3" placeholder="Descripción atractiva para publicidad y cotizaciones..."></textarea>
+                        <textarea id="catPromoText" rows="3" placeholder="Descripción atractiva para publicidad y cotizaciones de eventos..."></textarea>
                     </div>
                     <div class="form-group">
                         <label for="catNotes">Notas Internas</label>
@@ -2343,7 +2453,7 @@
         <div id="shareTripModal" class="modal">
             <div class="modal-content large" style="max-width:800px;">
                 <div class="modal-header">
-                    <h2><i class="fas fa-share-alt"></i> Compartir Información del Viaje</h2>
+                    <h2><i class="fas fa-share-alt"></i> Compartir Información del Evento</h2>
                     <span class="close" onclick="closeShareTripModal()">×</span>
                 </div>
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:25px;" id="shareTripLayout">
@@ -2352,8 +2462,8 @@
                         <h4 style="margin-bottom:15px;color:var(--primary);"><i class="fas fa-filter"></i> ¿Qué deseas incluir?</h4>
                         
                         <div style="background:#f8f9fa;border-radius:10px;padding:15px;margin-bottom:12px;">
-                            <p style="font-weight:600;margin-bottom:10px;color:var(--dark);">📋 Información del viaje</p>
-                            <label class="share-check"><input type="checkbox" id="sh_name" checked> Nombre y destino</label>
+                            <p style="font-weight:600;margin-bottom:10px;color:var(--dark);">📋 Información del evento</p>
+                            <label class="share-check"><input type="checkbox" id="sh_name" checked> Nombre y lugar</label>
                             <label class="share-check"><input type="checkbox" id="sh_duration" checked> Duración</label>
                             <label class="share-check"><input type="checkbox" id="sh_description" checked> Descripción</label>
                             <label class="share-check"><input type="checkbox" id="sh_promo"> Texto promocional</label>
@@ -2361,11 +2471,11 @@
                         </div>
                         
                         <div style="background:#f8f9fa;border-radius:10px;padding:15px;margin-bottom:12px;">
-                            <p style="font-weight:600;margin-bottom:10px;color:var(--dark);">🗺️ Logística</p>
-                            <label class="share-check"><input type="checkbox" id="sh_logistics" checked> Itinerario/Logística</label>
-                            <label class="share-check"><input type="checkbox" id="sh_transport"> Transporte</label>
-                            <label class="share-check"><input type="checkbox" id="sh_accommodation"> Hospedaje</label>
-                            <label class="share-check"><input type="checkbox" id="sh_meals"> Alimentación</label>
+                            <p style="font-weight:600;margin-bottom:10px;color:var(--dark);">🗺️ Logística / Cronograma</p>
+                            <label class="share-check"><input type="checkbox" id="sh_logistics" checked> Cronograma/Logística</label>
+                            <label class="share-check"><input type="checkbox" id="sh_transport"> Traslados</label>
+                            <label class="share-check"><input type="checkbox" id="sh_accommodation"> Venue / Salón</label>
+                            <label class="share-check"><input type="checkbox" id="sh_meals"> Catering / Menú</label>
                         </div>
                         
                         <div style="background:#f8f9fa;border-radius:10px;padding:15px;margin-bottom:12px;">
@@ -2381,10 +2491,10 @@
                         </div>
                         
                         <div style="background:#f8f9fa;border-radius:10px;padding:15px;margin-bottom:12px;">
-                            <p style="font-weight:600;margin-bottom:10px;color:var(--dark);">👥 Pasajeros (viaje activo)</p>
-                            <label class="share-check"><input type="checkbox" id="sh_clients"> Lista de pasajeros</label>
+                            <p style="font-weight:600;margin-bottom:10px;color:var(--dark);">👥 Asistentes (evento activo)</p>
+                            <label class="share-check"><input type="checkbox" id="sh_clients"> Lista de asistentes</label>
                             <label class="share-check"><input type="checkbox" id="sh_payments"> Estado de pagos</label>
-                            <label class="share-check"><input type="checkbox" id="sh_food_needs"> Req. alimentarios especiales</label>
+                            <label class="share-check"><input type="checkbox" id="sh_food_needs"> Req. especiales de asistentes</label>
                         </div>
                         
                         <div style="background:#f8f9fa;border-radius:10px;padding:15px;margin-bottom:12px;">
@@ -2394,8 +2504,8 @@
                         
                         <div style="background:#f8f9fa;border-radius:10px;padding:15px;margin-bottom:12px;">
                             <p style="font-weight:600;margin-bottom:10px;color:var(--dark);">💰 Gastos</p>
-                            <label class="share-check"><input type="checkbox" id="sh_expenses"> Gastos del viaje</label>
-                            <label class="share-check"><input type="checkbox" id="sh_expenses_covered"> Gastos que cubre el viaje</label>
+                            <label class="share-check"><input type="checkbox" id="sh_expenses"> Gastos del evento</label>
+                            <label class="share-check"><input type="checkbox" id="sh_expenses_covered"> Gastos que cubre el evento</label>
                         </div>
 
                         <div style="background:#f8f9fa;border-radius:10px;padding:15px;">
@@ -2413,20 +2523,20 @@
                         
                         <!-- Team list input -->
                         <div style="margin-top:15px;">
-                            <label style="font-weight:600;display:block;margin-bottom:6px;"><i class="fas fa-users-cog"></i> Equipo / Staff para incluir:</label>
+                            <label style="font-weight:600;display:block;margin-bottom:6px;"><i class="fas fa-users-cog"></i> Personal / Staff para incluir:</label>
                             <textarea id="shareTeamList" rows="3" placeholder="Ej: Juan Pérez - Guía&#10;María López - Coordinadora&#10;Carlos Ruiz - Chofer" style="width:100%;padding:10px;border:2px solid #e9ecef;border-radius:8px;font-family:'Poppins',sans-serif;font-size:0.85rem;" oninput="updateSharePreview()"></textarea>
                         </div>
                         
                         <!-- Expenses covered input -->
                         <div style="margin-top:10px;">
-                            <label style="font-weight:600;display:block;margin-bottom:6px;"><i class="fas fa-money-check"></i> Gastos cubiertos por el viaje (opcional):</label>
-                            <textarea id="shareExpensesCovered" rows="2" placeholder="Ej: Transporte, 2 comidas, seguro viajero..." style="width:100%;padding:10px;border:2px solid #e9ecef;border-radius:8px;font-family:'Poppins',sans-serif;font-size:0.85rem;" oninput="updateSharePreview()"></textarea>
+                            <label style="font-weight:600;display:block;margin-bottom:6px;"><i class="fas fa-money-check"></i> Gastos cubiertos por el evento (opcional):</label>
+                            <textarea id="shareExpensesCovered" rows="2" placeholder="Ej: Traslados, 2 comidas, seguro eventoro..." style="width:100%;padding:10px;border:2px solid #e9ecef;border-radius:8px;font-family:'Poppins',sans-serif;font-size:0.85rem;" oninput="updateSharePreview()"></textarea>
                         </div>
                         
                         <!-- Provider contacts input -->
                         <div style="margin-top:10px;">
                             <label style="font-weight:600;display:block;margin-bottom:6px;"><i class="fas fa-address-book"></i> Contactos de proveedores:</label>
-                            <textarea id="shareProviderContacts" rows="3" placeholder="Ej: Hotel Marbella: (984)123-4567 / reservas@marbella.com&#10;ADO: 01 800 702 8000" style="width:100%;padding:10px;border:2px solid #e9ecef;border-radius:8px;font-family:'Poppins',sans-serif;font-size:0.85rem;" oninput="updateSharePreview()"></textarea>
+                            <textarea id="shareProviderContacts" rows="3" placeholder="Ej: Florería Bella: (961)123-4567 / reservas@marbella.com&#10;ADO: 01 800 702 8000" style="width:100%;padding:10px;border:2px solid #e9ecef;border-radius:8px;font-family:'Poppins',sans-serif;font-size:0.85rem;" oninput="updateSharePreview()"></textarea>
                         </div>
                     </div>
                 </div>
@@ -2442,24 +2552,39 @@
         <div id="tripModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 id="tripModalTitle">Nuevo Viaje</h2>
+                    <h2 id="tripModalTitle">Nuevo Evento</h2>
                     <span class="close" onclick="closeTripModal()">×</span>
                 </div>
                 <form id="tripForm">
                     <div class="form-group" style="background:#e3f2fd;padding:15px;border-radius:10px;margin-bottom:15px;">
-                        <label for="tripFromCatalog"><i class="fas fa-book-open" style="color:#1976d2;"></i> Cargar desde Catálogo de Viajes <span style="font-size:0.85rem;color:var(--gray);">(opcional)</span></label>
+                        <label for="tripFromCatalog"><i class="fas fa-book-open" style="color:#1976d2;"></i> Cargar desde Catálogo de Eventos <span style="font-size:0.85rem;color:var(--gray);">(opcional)</span></label>
                         <select id="tripFromCatalog" onchange="loadCatalogIntoTripForm()" style="margin-top:6px;">
-                            <option value="">-- Viaje nuevo / manual --</option>
+                            <option value="">-- Evento nuevo / manual --</option>
                         </select>
                     </div>
-                    <div id="tripCatalogInfo" style="display:none;background:#f8f9fa;padding:12px;border-radius:8px;margin-bottom:15px;border-left:4px solid #047698;font-size:0.9rem;"></div>
+                    <div id="tripCatalogInfo" style="display:none;background:#f8f9fa;padding:12px;border-radius:8px;margin-bottom:15px;border-left:4px solid #a0285a;font-size:0.9rem;"></div>
+                    <div class="form-group">
+                        <label for="tripEventType"><i class="fas fa-star" style="color:var(--primary);"></i> Tipo de Evento</label>
+                        <select id="tripEventType">
+                            <option value="">— Seleccionar tipo —</option>
+                            <option value="boda">💍 Boda</option>
+                            <option value="xv">🎀 XV Años</option>
+                            <option value="cumpleanos">🎂 Cumpleaños</option>
+                            <option value="propuesta">💑 Propuesta de Matrimonio</option>
+                            <option value="aniversario">🥂 Aniversario</option>
+                            <option value="corporativo">🏢 Evento Corporativo</option>
+                            <option value="bautizo">👶 Bautizo / Baby Shower</option>
+                            <option value="graduacion">🎓 Graduación</option>
+                            <option value="otro">✨ Otro</option>
+                        </select>
+                    </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="tripName">Nombre del Viaje *</label>
-                            <input type="text" id="tripName" required>
+                            <label for="eventName">Nombre del Evento *</label>
+                            <input type="text" id="eventName" required>
                         </div>
                         <div class="form-group">
-                            <label for="tripDestination">Destino *</label>
+                            <label for="tripDestination">Lugar / Venue *</label>
                             <input type="text" id="tripDestination" required>
                         </div>
                     </div>
@@ -2485,15 +2610,33 @@
                     </div>
                     <div class="checkbox-group">
                         <input type="checkbox" id="includeTax" onchange="calculateTaxPrice()">
-                        <label for="includeTax">Incluir impuestos del 16%</label>
+                        <label for="includeTax">Sumar IVA del 16% al precio base</label>
                     </div>
                     <div class="tax-info" id="taxInfo" style="display: none;">
                         <i class="fas fa-info-circle"></i>
                         <span id="taxCalculation"></span>
                     </div>
+                    <div class="form-group" id="specialMomentGroup" style="background:#fce4ec;padding:14px;border-radius:10px;border-left:4px solid #e91e63;">
+                        <label for="tripSpecialMoment"><i class="fas fa-heart" style="color:#e91e63;"></i> Momento / Detalle especial <span style="font-size:0.8rem;color:#c2185b;">(bodas, propuestas, aniversarios…)</span></label>
+                        <textarea id="tripSpecialMoment" rows="2" placeholder="Ej: Historia de la pareja, canción favorita, propuesta sorpresa en mirador..."></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tripGuestsTotal"><i class="fas fa-users"></i> Invitados totales</label>
+                            <input type="number" id="tripGuestsTotal" min="0" placeholder="Ej: 200">
+                        </div>
+                        <div class="form-group">
+                            <label for="tripGuestsConfirmed"><i class="fas fa-user-check"></i> Confirmados</label>
+                            <input type="number" id="tripGuestsConfirmed" min="0" placeholder="Ej: 180">
+                        </div>
+                        <div class="form-group">
+                            <label for="tripGuestsAttended"><i class="fas fa-star"></i> Asistencia real</label>
+                            <input type="number" id="tripGuestsAttended" min="0" placeholder="Ej: 175">
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="tripDescription">Descripción</label>
-                        <textarea id="tripDescription" rows="4" placeholder="Descripción detallada del viaje..."></textarea>
+                        <textarea id="tripDescription" rows="4" placeholder="Descripción detallada del evento..."></textarea>
                     </div>
                     <div class="form-group">
                         <label for="tripImages">URLs de Imágenes (separadas por comas)</label>
@@ -2501,7 +2644,7 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-save"></i> Guardar Viaje
+                            <i class="fas fa-save"></i> Guardar Evento
                         </button>
                         <button type="button" class="btn btn-secondary" onclick="closeTripModal()">
                             <i class="fas fa-times"></i> Cancelar
@@ -2554,7 +2697,7 @@
                     
                     <div class="checkbox-group">
                         <input type="checkbox" id="globalClientFood" name="globalClientFood">
-                        <label for="globalClientFood">Requiere alimentos especiales</label>
+                        <label for="globalClientFood">Requiere consideraciones especiales</label>
                     </div>
                     
                     <div class="form-group">
@@ -2586,6 +2729,117 @@
             </div>
         </div>
 
+
+        <!-- Lead Form Modal -->
+        <div id="leadModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="leadModalTitle"><i class="fas fa-funnel-dollar"></i> Nuevo Lead</h2>
+                    <span class="close" onclick="closeLeadModal()">×</span>
+                </div>
+                <form id="leadForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="leadName">Nombre del Prospecto *</label>
+                            <input type="text" id="leadName" required placeholder="Nombre completo">
+                        </div>
+                        <div class="form-group">
+                            <label for="leadPhone">Teléfono</label>
+                            <input type="tel" id="leadPhone" placeholder="(961) 000-0000">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="leadEventType">Tipo de Evento</label>
+                            <select id="leadEventType">
+                                <option value="">— Seleccionar —</option>
+                                <option value="boda">💍 Boda</option>
+                                <option value="xv">🎀 XV Años</option>
+                                <option value="cumpleanos">🎂 Cumpleaños</option>
+                                <option value="propuesta">💑 Propuesta</option>
+                                <option value="aniversario">🥂 Aniversario</option>
+                                <option value="corporativo">🏢 Corporativo</option>
+                                <option value="bautizo">👶 Bautizo/Baby Shower</option>
+                                <option value="graduacion">🎓 Graduación</option>
+                                <option value="otro">✨ Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="leadStage">Etapa</label>
+                            <select id="leadStage">
+                                <option value="interesado">💬 Interesado</option>
+                                <option value="cotizado">📄 Cotizado</option>
+                                <option value="negociando">🤝 Negociando</option>
+                                <option value="cerrado">✅ Cerrado/Ganado</option>
+                                <option value="perdido">❌ Perdido</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="leadValue">Valor estimado (MXN)</label>
+                            <input type="number" id="leadValue" min="0" step="0.01" placeholder="0.00">
+                        </div>
+                        <div class="form-group">
+                            <label for="leadEventDate">Fecha tentativa del evento</label>
+                            <input type="date" id="leadEventDate">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="leadNotes">Notas / Próxima acción</label>
+                        <textarea id="leadNotes" rows="3" placeholder="Ej: Llamar el lunes para confirmar cotización..."></textarea>
+                    </div>
+                    <div class="form-group" style="display:flex;gap:10px;flex-wrap:wrap;">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
+                        <button type="button" class="btn btn-secondary" onclick="closeLeadModal()"><i class="fas fa-times"></i> Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Checklist Modal -->
+        <div id="checklistModal" class="modal">
+            <div class="modal-content large">
+                <div class="modal-header">
+                    <h2 id="checklistModalTitle"><i class="fas fa-tasks"></i> Checklist del Evento</h2>
+                    <span class="close" onclick="document.getElementById('checklistModal').style.display='none'">×</span>
+                </div>
+                <div>
+                    <div style="display:flex;gap:8px;margin-bottom:15px;flex-wrap:wrap;">
+                        <input type="text" id="newChecklistItem" placeholder="Nueva tarea..." style="flex:1;padding:10px;border:2px solid #e9ecef;border-radius:8px;font-family:'Poppins',sans-serif;">
+                        <input type="date" id="newChecklistDue" style="padding:10px;border:2px solid #e9ecef;border-radius:8px;font-family:'Poppins',sans-serif;">
+                        <button class="btn btn-primary" onclick="addChecklistItem()"><i class="fas fa-plus"></i> Agregar</button>
+                    </div>
+                    <!-- Quick templates -->
+                    <div style="margin-bottom:15px;display:flex;flex-wrap:wrap;gap:6px;">
+                        <span style="font-size:0.8rem;color:var(--gray);align-self:center;">Plantillas rápidas:</span>
+                        <button class="btn btn-small btn-secondary" onclick="loadChecklistTemplate('boda')">💍 Boda</button>
+                        <button class="btn btn-small btn-secondary" onclick="loadChecklistTemplate('xv')">🎀 XV Años</button>
+                        <button class="btn btn-small btn-secondary" onclick="loadChecklistTemplate('corporativo')">🏢 Corporativo</button>
+                        <button class="btn btn-small btn-secondary" onclick="loadChecklistTemplate('cumpleanos')">🎂 Cumpleaños</button>
+                    </div>
+                    <div id="checklistContainer"></div>
+                    <div style="margin-top:12px;font-size:0.85rem;color:var(--gray);display:flex;justify-content:space-between;" id="checklistProgress"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event Gallery Modal -->
+        <div id="galleryModal" class="modal">
+            <div class="modal-content large">
+                <div class="modal-header">
+                    <h2 id="galleryModalTitle"><i class="fas fa-images"></i> Galería del Evento</h2>
+                    <span class="close" onclick="document.getElementById('galleryModal').style.display='none'">×</span>
+                </div>
+                <div>
+                    <div style="margin-bottom:15px;">
+                        <label style="font-weight:600;display:block;margin-bottom:8px;">Subir fotos del evento realizado:</label>
+                        <input type="file" id="galleryUpload" accept="image/*" multiple onchange="handleGalleryUpload(event)">
+                    </div>
+                    <div id="galleryContainer" style="display:flex;flex-wrap:wrap;gap:12px;"></div>
+                </div>
+            </div>
+        </div>
         <!-- Add Existing Client Modal -->
         <div id="addExistingClientModal" class="modal">
             <div class="modal-content large">
@@ -2656,7 +2910,7 @@
                     
                     <div class="checkbox-group">
                         <input type="checkbox" id="clientFood" name="clientFood">
-                        <label for="clientFood">Requiere alimentos especiales</label>
+                        <label for="clientFood">Requiere consideraciones especiales</label>
                     </div>
                     
                     <div class="form-group">
@@ -2753,9 +3007,9 @@
                             <label for="expenseCategory">Categoría *</label>
                             <select id="expenseCategory" required>
                                 <option value="">Seleccionar categoría</option>
-                                <option value="transporte">Transporte</option>
-                                <option value="hospedaje">Hospedaje</option>
-                                <option value="alimentacion">Alimentación</option>
+                                <option value="transporte">Traslados</option>
+                                <option value="hospedaje">Venue / Salón</option>
+                                <option value="alimentacion">Catering / Menú</option>
                                 <option value="entradas">Entradas/Boletos</option>
                                 <option value="guias">Guías Turísticos</option>
                                 <option value="combustible">Combustible</option>
@@ -2922,27 +3176,30 @@
             
             const gridBtn = document.getElementById('gridViewBtn');
             const listBtn = document.getElementById('listViewBtn');
+            const calBtn = document.getElementById('calViewBtn');
             const gridView = document.getElementById('tripsContainer');
             const listView = document.getElementById('tripsListContainer');
+            const calView = document.getElementById('calendarContainer');
             const filterContainer = document.getElementById('filterContainer');
             
+            [gridBtn, listBtn, calBtn].forEach(b => b && b.classList.remove('active'));
+            gridView.style.display = 'none';
+            listView.classList.remove('active');
+            if (calView) calView.classList.remove('active');
+            if (filterContainer) filterContainer.classList.remove('active');
+
             if (viewType === 'grid') {
-                gridBtn.classList.add('active');
-                listBtn.classList.remove('active');
+                gridBtn && gridBtn.classList.add('active');
                 gridView.style.display = 'grid';
-                listView.classList.remove('active');
-                filterContainer.classList.remove('active');
-            } else {
-                gridBtn.classList.remove('active');
-                listBtn.classList.add('active');
-                gridView.style.display = 'none';
-                listView.classList.add('active');
-            }
-            
-            if (viewType === 'grid') {
                 renderTripsGrid();
-            } else {
+            } else if (viewType === 'list') {
+                listBtn && listBtn.classList.add('active');
+                listView.classList.add('active');
                 renderTripsList();
+            } else if (viewType === 'calendar') {
+                calBtn && calBtn.classList.add('active');
+                if (calView) calView.classList.add('active');
+                renderCalendar();
             }
         }
 
@@ -2963,7 +3220,7 @@
             const destinationSelect = document.getElementById('filterDestination');
             const destinations = [...new Set(trips.map(trip => trip.destination))];
             
-            destinationSelect.innerHTML = '<option value="">Todos los destinos</option>';
+            destinationSelect.innerHTML = '<option value="">Todos los lugares</option>';
             destinations.forEach(destination => {
                 const option = document.createElement('option');
                 option.value = destination;
@@ -3120,8 +3377,8 @@
                 container.innerHTML = `
                     <div class="empty-state" style="grid-column: 1 / -1;">
                         <i class="fas fa-suitcase-rolling"></i>
-                        <h3>No hay viajes que coincidan con los filtros</h3>
-                        <p>Intenta ajustar los filtros o crear un nuevo viaje</p>
+                        <h3>No hay eventos que coincidan con los filtros</h3>
+                        <p>Intenta ajustar los filtros o crear un nuevo evento</p>
                     </div>
                 `;
                 return;
@@ -3150,17 +3407,25 @@
                         
                         <div class="trip-header">
                             <div>
+                                ${trip.eventType ? `<span class="event-type-badge ${trip.eventType}">${getEventTypeEmoji(trip.eventType)} ${getEventTypeLabel(trip.eventType)}</span>` : ''}
                                 <div class="trip-title">${trip.name}</div>
                                 <div class="trip-destination"><i class="fas fa-map-marker-alt"></i> ${trip.destination}</div>
+                                ${trip.specialMoment ? `<div style="font-size:0.78rem;color:#c2185b;margin-top:4px;"><i class="fas fa-heart"></i> ${trip.specialMoment.substring(0,60)}${trip.specialMoment.length>60?'...':''}</div>` : ''}
+                                ${(trip.guestsTotal||trip.guestsConfirmed) ? `
+                                <div class="guest-counter">
+                                    ${trip.guestsTotal ? `<div class="guest-stat"><div class="gs-num">${trip.guestsTotal}</div><div class="gs-label">Invitados</div></div>` : ''}
+                                    ${trip.guestsConfirmed ? `<div class="guest-stat"><div class="gs-num">${trip.guestsConfirmed}</div><div class="gs-label">Confirmados</div></div>` : ''}
+                                    ${trip.guestsAttended ? `<div class="guest-stat"><div class="gs-num">${trip.guestsAttended}</div><div class="gs-label">Asistieron</div></div>` : ''}
+                                </div>` : ''}
                             </div>
                             <div class="trip-actions">
-                                <button class="btn btn-small btn-secondary" onclick="editTrip('${trip.id}')" title="Editar viaje">
+                                <button class="btn btn-small btn-secondary" onclick="editTrip('${trip.id}')" title="Editar evento">
                                     <i class="fas fa-edit"></i>
                                 </button>
                                 <button class="btn btn-small ${trip.completed ? 'btn-warning' : 'btn-success'}" onclick="toggleTripCompleted('${trip.id}')" title="${trip.completed ? 'Marcar como no realizado' : 'Marcar como realizado'}">
                                     <i class="fas ${trip.completed ? 'fa-undo' : 'fa-check'}"></i>
                                 </button>
-                                <button class="btn btn-small btn-danger" onclick="deleteTrip('${trip.id}')" title="Eliminar viaje">
+                                <button class="btn btn-small btn-danger" onclick="deleteTrip('${trip.id}')" title="Eliminar evento">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>
@@ -3212,6 +3477,9 @@
                                     <button class="btn btn-small btn-primary" onclick="manageClients('${trip.id}')">
                                         Gestionar
                                     </button>
+                                    <button class="btn btn-small btn-secondary" onclick="openChecklist('${trip.id}')" title="Checklist de tareas">
+                                        <i class="fas fa-tasks"></i>
+                                    </button>
                                 </div>
                             </div>
                             
@@ -3247,6 +3515,7 @@
                                                 <span class="${clientPending > 0 ? 'payment-pending' : 'payment-complete'}">
                                                     Pendiente: ${formatCurrency(clientPending)}
                                                 </span>
+                                                ${clientPending > 0 && client.phone ? `<button class="reminder-btn" onclick="sendPaymentReminder('${trip.id}','${trip.name}',event)" data-phone="${client.phone}" data-name="${client.name}" data-pending="${clientPending}" style="margin-left:6px;"><i class="fab fa-whatsapp"></i></button>` : ''}
                                                 ${client.food ? `<span style="color: #ff9800; margin-left: 5px;"><i class="fas fa-utensils"></i></span>` : ''}
                                                 ${hasDiscount ? `<span style="color: #f44336; margin-left: 5px;"><i class="fas fa-tag"></i></span>` : ''}
                                             </div>
@@ -3265,9 +3534,14 @@
                         <div class="expenses-section">
                             <div class="expenses-header">
                                 <h4><i class="fas fa-receipt"></i> Gastos (${trip.expenses ? trip.expenses.length : 0})</h4>
-                                <button class="btn btn-small btn-warning" onclick="manageExpenses('${trip.id}')">
-                                    Gestionar
-                                </button>
+                                <div style="display:flex;gap:6px;">
+                                    <button class="btn btn-small btn-warning" onclick="manageExpenses('${trip.id}')">
+                                        Gestionar
+                                    </button>
+                                    <button class="btn btn-small btn-secondary" onclick="openGallery('${trip.id}')" title="Galería de fotos">
+                                        <i class="fas fa-images"></i>
+                                    </button>
+                                </div>
                             </div>
                             
                             ${trip.expenses && trip.expenses.length > 0 ? `
@@ -3302,8 +3576,8 @@
                         <td colspan="8" style="text-align: center; padding: 40px; color: var(--gray);">
                             <div class="empty-state" style="padding: 0;">
                                 <i class="fas fa-suitcase-rolling"></i>
-                                <h3>No hay viajes que coincidan con los filtros</h3>
-                                <p>Intenta ajustar los filtros o crear un nuevo viaje</p>
+                                <h3>No hay eventos que coincidan con los filtros</h3>
+                                <p>Intenta ajustar los filtros o crear un nuevo evento</p>
                             </div>
                         </td>
                     </tr>
@@ -3341,7 +3615,7 @@
                         </td>
                         <td>
                             <div class="trip-list-actions">
-                                <button class="btn btn-small btn-primary" onclick="editTrip('${trip.id}')" title="Editar viaje">
+                                <button class="btn btn-small btn-primary" onclick="editTrip('${trip.id}')" title="Editar evento">
                                     <i class="fas fa-edit"></i>
                                 </button>
                                 <button class="btn btn-small ${trip.completed ? 'btn-warning' : 'btn-success'}" onclick="toggleTripCompleted('${trip.id}')" title="${trip.completed ? 'Marcar como no realizado' : 'Marcar como realizado'}">
@@ -3353,7 +3627,7 @@
                                 <button class="btn btn-small btn-warning" onclick="manageExpenses('${trip.id}')" title="Gestionar gastos">
                                     <i class="fas fa-receipt"></i>
                                 </button>
-                                <button class="btn btn-small btn-danger" onclick="deleteTrip('${trip.id}')" title="Eliminar viaje">
+                                <button class="btn btn-small btn-danger" onclick="deleteTrip('${trip.id}')" title="Eliminar evento">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>
@@ -3370,7 +3644,7 @@
             trip.completed = !trip.completed;
             saveData();
             renderDashboard();
-            showNotification(trip.completed ? 'Viaje marcado como realizado' : 'Viaje marcado como no realizado', 'success');
+            showNotification(trip.completed ? 'Evento marcado como realizado' : 'Evento marcado como no realizado', 'success');
         }
 
         function renderGlobalClients() {
@@ -3551,7 +3825,7 @@
 
         function showNewTripModal() {
             editingTrip = false;
-            document.getElementById('tripModalTitle').textContent = 'Nuevo Viaje';
+            document.getElementById('tripModalTitle').textContent = 'Nuevo Evento';
             document.getElementById('tripForm').reset();
             document.getElementById('tripCatalogInfo').style.display = 'none';
             populateTripCatalogSelect();
@@ -3564,10 +3838,15 @@
 
             editingTrip = true;
             currentTripId = tripId;
-            document.getElementById('tripModalTitle').textContent = 'Editar Viaje';
+            document.getElementById('tripModalTitle').textContent = 'Editar Evento';
             
-            document.getElementById('tripName').value = trip.name;
+            document.getElementById('eventName').value = trip.name;
             document.getElementById('tripDestination').value = trip.destination;
+            document.getElementById('tripEventType').value = trip.eventType || '';
+            document.getElementById('tripSpecialMoment').value = trip.specialMoment || '';
+            document.getElementById('tripGuestsTotal').value = trip.guestsTotal || '';
+            document.getElementById('tripGuestsConfirmed').value = trip.guestsConfirmed || '';
+            document.getElementById('tripGuestsAttended').value = trip.guestsAttended || '';
             document.getElementById('tripStartDate').value = trip.startDate;
             document.getElementById('tripEndDate').value = trip.endDate;
             document.getElementById('tripBasePrice').value = trip.basePrice || trip.price;
@@ -3585,13 +3864,13 @@
 
             const clientsCount = trip.clients ? trip.clients.length : 0;
             const expensesCount = trip.expenses ? trip.expenses.length : 0;
-            const confirmMessage = `¿Estás seguro de que quieres eliminar el viaje "${trip.name}"?\n\nEsto también eliminará ${clientsCount} cliente(s), ${expensesCount} gasto(s) y todos sus registros asociados.`;
+            const confirmMessage = `¿Estás seguro de que quieres eliminar el evento "${trip.name}"?\n\nEsto también eliminará ${clientsCount} cliente(s), ${expensesCount} gasto(s) y todos sus registros asociados.`;
 
             if (confirm(confirmMessage)) {
                 trips = trips.filter(t => t.id !== tripId);
                 saveData();
                 renderDashboard();
-                showNotification('Viaje eliminado exitosamente', 'success');
+                showNotification('Evento eliminado exitosamente', 'success');
             }
         }
 
@@ -3628,8 +3907,13 @@
 
             const basePrice = parseFloat(document.getElementById('tripBasePrice').value) || 0;
             const formData = {
-                name: document.getElementById('tripName').value.trim(),
+                name: document.getElementById('eventName').value.trim(),
                 destination: document.getElementById('tripDestination').value.trim(),
+                eventType: document.getElementById('tripEventType').value,
+                specialMoment: document.getElementById('tripSpecialMoment').value.trim(),
+                guestsTotal: parseInt(document.getElementById('tripGuestsTotal').value) || 0,
+                guestsConfirmed: parseInt(document.getElementById('tripGuestsConfirmed').value) || 0,
+                guestsAttended: parseInt(document.getElementById('tripGuestsAttended').value) || 0,
                 startDate: document.getElementById('tripStartDate').value,
                 endDate: document.getElementById('tripEndDate').value,
                 price: parseFloat(document.getElementById('tripPrice').value),
@@ -3658,7 +3942,7 @@
                 const tripIndex = trips.findIndex(t => t.id === currentTripId);
                 if (tripIndex !== -1) {
                     trips[tripIndex] = { ...trips[tripIndex], ...formData };
-                    showNotification('Viaje actualizado exitosamente', 'success');
+                    showNotification('Evento actualizado exitosamente', 'success');
                 }
             } else {
                 const newTrip = {
@@ -3669,7 +3953,7 @@
                     createdAt: new Date().toISOString()
                 };
                 trips.push(newTrip);
-                showNotification('Viaje creado exitosamente', 'success');
+                showNotification('Evento creado exitosamente', 'success');
             }
 
             saveData();
@@ -3703,7 +3987,7 @@
                             <div class="empty-state" style="padding: 0;">
                                 <i class="fas fa-users"></i>
                                 <h3>No hay clientes disponibles para agregar</h3>
-                                <p>Todos los clientes ya están registrados en este viaje</p>
+                                <p>Todos los clientes ya están registrados en este evento</p>
                             </div>
                         </td>
                     </tr>
@@ -3749,7 +4033,7 @@
             if (!trip || !globalClient) return;
 
             if (trip.clients && trip.clients.some(c => c.globalClientId === globalClientId)) {
-                showNotification('Este cliente ya está registrado en este viaje', 'warning');
+                showNotification('Este cliente ya está registrado en este evento', 'warning');
                 return;
             }
 
@@ -3774,7 +4058,7 @@
             closeAddExistingClientModal();
             renderClientsModal(trip);
             renderDashboard();
-            showNotification(`Cliente "${globalClient.name}" agregado exitosamente al viaje`, 'success');
+            showNotification(`Cliente "${globalClient.name}" agregado exitosamente al evento`, 'success');
         }
 
         function closeAddExistingClientModal() {
@@ -3854,7 +4138,7 @@
                                             <div class="client-name">${client.name}</div>
                                             ${client.email ? `<div style="color: var(--gray); font-size: 0.9rem;"><i class="fas fa-envelope"></i> ${client.email}</div>` : ''}
                                             ${client.phone ? `<div style="color: var(--gray); font-size: 0.9rem;"><i class="fas fa-phone"></i> ${client.phone}</div>` : ''}
-                                            ${client.food ? `<div style="color: #ff9800; font-size: 0.9rem;"><i class="fas fa-utensils"></i> Requiere alimentos especiales</div>` : ''}
+                                            ${client.food ? `<div style="color: #ff9800; font-size: 0.9rem;"><i class="fas fa-utensils"></i> Requiere consideraciones especiales</div>` : ''}
                                             ${hasDiscount ? `<div style="color: #f44336; font-size: 0.9rem;"><i class="fas fa-tag"></i> Descuento: ${client.discount}%</div>` : ''}
                                         </div>
                                         <div style="display: flex; gap: 5px;">
@@ -3925,7 +4209,7 @@
                             <div class="empty-state" style="padding: 40px 0;">
                                 <i class="fas fa-users"></i>
                                 <h3>No hay clientes registrados</h3>
-                                <p>Agrega clientes para comenzar a gestionar el viaje</p>
+                                <p>Agrega clientes para comenzar a gestionar el evento</p>
                             </div>
                         `}
                     </div>
@@ -4006,7 +4290,7 @@
                                         <div class="empty-state" style="padding: 0;">
                                             <i class="fas fa-users"></i>
                                             <h3>No hay clientes registrados</h3>
-                                            <p>Agrega clientes para comenzar a gestionar el viaje</p>
+                                            <p>Agrega clientes para comenzar a gestionar el evento</p>
                                         </div>
                                     </td>
                                 </tr>
@@ -4125,7 +4409,7 @@
             const client = trip.clients.find(c => c.id === clientId);
             if (!client) return;
 
-            if (confirm(`¿Estás seguro de que quieres eliminar a "${client.name}" del viaje?`)) {
+            if (confirm(`¿Estás seguro de que quieres eliminar a "${client.name}" del evento?`)) {
                 trip.clients = trip.clients.filter(c => c.id !== clientId);
                 saveData();
                 renderClientsModal(trip);
@@ -4335,7 +4619,7 @@
                         <div class="empty-state" style="padding: 40px 0;">
                             <i class="fas fa-receipt"></i>
                             <h3>No hay gastos registrados</h3>
-                            <p>Agrega gastos para llevar un control financiero del viaje</p>
+                            <p>Agrega gastos para llevar un control financiero del evento</p>
                         </div>
                     `}
                 </div>
@@ -4571,7 +4855,7 @@
                 return;
             }
 
-            const reminderMessage = `Hola ${client.name.split(' ')[0]}, este es un recordatorio amable de Nómadas Tours sobre tu pago pendiente de ${formatCurrency(clientPending)} para el viaje "${trip.name}".\n\nFecha del viaje: ${formatDate(trip.startDate)} - ${formatDate(trip.endDate)}\nDestino: ${trip.destination}\n\nSi tienes alguna pregunta o necesitas más información, no dudes en contactarnos. ¡Gracias por tu preferencia!`;
+            const reminderMessage = `Hola ${client.name.split(' ')[0]}, este es un recordatorio amable de Paulett Soul Eventologist sobre tu pago pendiente de ${formatCurrency(clientPending)} para el evento "${trip.name}".\n\nFecha del evento: ${formatDate(trip.startDate)} - ${formatDate(trip.endDate)}\nLugar: ${trip.destination}\n\nSi tienes alguna pregunta o necesitas más información, no dudes en contactarnos. ¡Gracias por tu preferencia!`;
 
             let phoneNumber = client.phone.replace(/\D/g, '');
             
@@ -4590,8 +4874,8 @@
             const trip = trips.find(t => t.id === tripId);
             if (!trip || !trip.clients || trip.clients.length === 0) return;
 
-            let clientsList = `Lista de clientes para el viaje "${trip.name}"\n\n`;
-            clientsList += `Destino: ${trip.destination}\n`;
+            let clientsList = `Lista de clientes para el evento "${trip.name}"\n\n`;
+            clientsList += `Lugar: ${trip.destination}\n`;
             clientsList += `Fechas: ${formatDate(trip.startDate)} - ${formatDate(trip.endDate)}\n\n`;
             
             trip.clients.forEach((client, index) => {
@@ -4607,7 +4891,7 @@
                 clientsList += `   Pagado: ${formatCurrency(clientPaid)}\n`;
                 clientsList += `   Pendiente: ${formatCurrency(clientPending)}\n`;
                 
-                if (client.food) clientsList += `   Requiere alimentos especiales\n`;
+                if (client.food) clientsList += `   Requiere consideraciones especiales\n`;
                 if (client.discount && client.discount > 0) clientsList += `   Descuento aplicado: ${client.discount}%\n`;
                 
                 clientsList += `\n`;
@@ -4624,7 +4908,7 @@
             clientsList += `Total recaudado: ${formatCurrency(totalPaid)}\n`;
             clientsList += `Total esperado: ${formatCurrency(totalExpected)}\n`;
             clientsList += `Total pendiente: ${formatCurrency(totalPending)}\n\n`;
-            clientsList += `Generado por Nómadas Tours - Sistema de Gestión`;
+            clientsList += `Generado por Paulett Soul Eventologist - Sistema de Gestión`;
 
             const textarea = document.createElement('textarea');
             textarea.value = clientsList;
@@ -4663,13 +4947,15 @@
             const totalExpenses = fTrips.reduce((s,t) => s + (t.expenses||[]).reduce((es,e) => es+e.amount, 0), 0);
             const netProfit = totalRevenue - totalExpenses;
             const IVA_RATE = 0.16;
-            const netProfitAfterIva = netProfit / (1 + IVA_RATE);
-            const ivaAmount = netProfit - netProfitAfterIva;
+            // IVA is embedded in total revenue: revenue ya incluye IVA
+            const revenueBeforeIva = totalRevenue / (1 + IVA_RATE);
+            const ivaAmount = totalRevenue - revenueBeforeIva;        // IVA a enterar
+            const netProfitAfterIva = revenueBeforeIva - totalExpenses; // Ganancia neta sin IVA
             const pendingPayments = fTrips.reduce((s,t) => s + (t.clients||[]).reduce((cs,c) => {
                 const paid = (c.payments||[]).reduce((ps,p) => ps+p.amount, 0);
                 return cs + Math.max(0, (c.finalPrice||t.price||0) - paid);
             }, 0), 0);
-            const profitMargin = totalRevenue > 0 ? ((netProfit/totalRevenue)*100).toFixed(1) : 0;
+            const profitMargin = revenueBeforeIva > 0 ? ((netProfitAfterIva/revenueBeforeIva)*100).toFixed(1) : 0;
             const avgClientsPerTrip = totalTrips > 0 ? (totalClients/totalTrips).toFixed(1) : 0;
             const avgRevenuePerClient = totalClients > 0 ? totalRevenue/totalClients : 0;
 
@@ -4680,9 +4966,9 @@
                 (t.clients||[]).forEach(c => {
                     const key = c.globalClientId || c.name;
                     const name = c.name;
-                    if (!clientTripCount[key]) clientTripCount[key] = { name, trips: 0, tripNames: [] };
+                    if (!clientTripCount[key]) clientTripCount[key] = { name, trips: 0, eventNames: [] };
                     clientTripCount[key].trips++;
-                    clientTripCount[key].tripNames.push(t.name);
+                    clientTripCount[key].eventNames.push(t.name);
                     const paid = (c.payments||[]).reduce((s,p)=>s+p.amount,0);
                     const debt = Math.max(0, (c.finalPrice||t.price||0) - paid);
                     if (!clientDebt[key]) clientDebt[key] = { name, debt: 0, trips: [] };
@@ -4739,24 +5025,24 @@
             reportsContainer.innerHTML = `
                 <!-- KPIs -->
                 <div class="kpi-grid" style="margin-bottom:30px;">
-                    <div class="kpi-card blue"><div class="kpi-value">${totalTrips}</div><div class="kpi-label"><i class="fas fa-suitcase-rolling"></i> Total Viajes</div></div>
+                    <div class="kpi-card blue"><div class="kpi-value">${totalTrips}</div><div class="kpi-label"><i class="fas fa-calendar-check"></i> Total Eventos</div></div>
                     <div class="kpi-card green"><div class="kpi-value">${completedTrips}</div><div class="kpi-label"><i class="fas fa-check-circle"></i> Realizados</div></div>
                     <div class="kpi-card blue"><div class="kpi-value">${totalClients}</div><div class="kpi-label"><i class="fas fa-users"></i> Total Clientes</div></div>
                     <div class="kpi-card green"><div class="kpi-value">${formatCurrency(totalRevenue)}</div><div class="kpi-label"><i class="fas fa-money-bill-wave"></i> Ingresos Totales</div></div>
                     <div class="kpi-card orange"><div class="kpi-value">${formatCurrency(totalExpenses)}</div><div class="kpi-label"><i class="fas fa-receipt"></i> Gastos Totales</div></div>
-                    <div class="kpi-card ${netProfit>=0?'green':'red'}"><div class="kpi-value">${formatCurrency(netProfit)}</div><div class="kpi-label"><i class="fas fa-chart-line"></i> Ganancia Bruta</div></div>
-                    <div class="kpi-card ${netProfitAfterIva>=0?'green':'red'}"><div class="kpi-value">${formatCurrency(netProfitAfterIva)}</div><div class="kpi-label"><i class="fas fa-file-invoice-dollar"></i> Ganancia después de IVA</div></div>
-                    <div class="kpi-card orange"><div class="kpi-value">${formatCurrency(ivaAmount)}</div><div class="kpi-label"><i class="fas fa-percentage"></i> IVA estimado (16%)</div></div>
+                    <div class="kpi-card ${netProfit>=0?'green':'red'}"><div class="kpi-value">${formatCurrency(netProfit)}</div><div class="kpi-label"><i class="fas fa-chart-line"></i> Ganancia Bruta (con IVA)</div></div>
+                    <div class="kpi-card ${netProfitAfterIva>=0?'green':'red'}"><div class="kpi-value">${formatCurrency(netProfitAfterIva)}</div><div class="kpi-label"><i class="fas fa-file-invoice-dollar"></i> Ganancia Neta (sin IVA)</div></div>
+                    <div class="kpi-card orange"><div class="kpi-value">${formatCurrency(ivaAmount)}</div><div class="kpi-label"><i class="fas fa-percentage"></i> IVA a entregar (16%)</div></div>
                     <div class="kpi-card red"><div class="kpi-value">${formatCurrency(pendingPayments)}</div><div class="kpi-label"><i class="fas fa-hourglass-half"></i> Por Cobrar</div></div>
                     <div class="kpi-card blue"><div class="kpi-value">${profitMargin}%</div><div class="kpi-label"><i class="fas fa-percentage"></i> Margen de Ganancia</div></div>
-                    <div class="kpi-card"><div class="kpi-value">${avgClientsPerTrip}</div><div class="kpi-label"><i class="fas fa-user-friends"></i> Prom. Pasajeros/Viaje</div></div>
+                    <div class="kpi-card"><div class="kpi-value">${avgClientsPerTrip}</div><div class="kpi-label"><i class="fas fa-user-friends"></i> Prom. Asistentes/Evento</div></div>
                     <div class="kpi-card green"><div class="kpi-value">${formatCurrency(avgRevenuePerClient)}</div><div class="kpi-label"><i class="fas fa-dollar-sign"></i> Ingreso Prom./Cliente</div></div>
                 </div>
 
                 <!-- Charts row -->
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-bottom:30px;">
                     <div style="background:white;padding:20px;border-radius:12px;box-shadow:var(--shadow);">
-                        <h4 style="margin-bottom:15px;"><i class="fas fa-chart-pie"></i> Ingresos por Categoría de Viaje</h4>
+                        <h4 style="margin-bottom:15px;"><i class="fas fa-chart-pie"></i> Ingresos por Categoría de Evento</h4>
                         <div style="position:relative;height:240px;"><canvas id="categoryPieChart"></canvas></div>
                     </div>
                     <div style="background:white;padding:20px;border-radius:12px;box-shadow:var(--shadow);">
@@ -4770,14 +5056,14 @@
                     <div>
                         <h4 style="margin-bottom:12px;"><i class="fas fa-star" style="color:#ff9800;"></i> Clientes que más viajan</h4>
                         <table class="clients-table">
-                            <thead><tr><th>#</th><th>Cliente</th><th>Viajes</th></tr></thead>
+                            <thead><tr><th>#</th><th>Cliente</th><th>Eventos</th></tr></thead>
                             <tbody>
                             ${topClients.length > 0 ? topClients.map((c,i) => `
                                 <tr>
-                                    <td style="font-weight:700;color:#047698;">${i+1}</td>
+                                    <td style="font-weight:700;color:#a0285a;">${i+1}</td>
                                     <td>
                                         <div style="font-weight:600;">${c.name}</div>
-                                        <div style="font-size:0.75rem;color:var(--gray);">${c.tripNames.slice(0,2).join(', ')}${c.tripNames.length>2?'...':''}</div>
+                                        <div style="font-size:0.75rem;color:var(--gray);">${c.eventNames.slice(0,2).join(', ')}${c.eventNames.length>2?'...':''}</div>
                                     </td>
                                     <td><span style="background:#e3f2fd;color:#1976d2;padding:3px 10px;border-radius:20px;font-weight:600;">${c.trips}</span></td>
                                 </tr>`).join('') : '<tr><td colspan="3" style="text-align:center;color:var(--gray);padding:20px;">Sin datos</td></tr>'}
@@ -4785,9 +5071,9 @@
                         </table>
                     </div>
                     <div>
-                        <h4 style="margin-bottom:12px;"><i class="fas fa-exclamation-circle" style="color:#f44336;"></i> Clientes con deuda (por viaje)</h4>
+                        <h4 style="margin-bottom:12px;"><i class="fas fa-exclamation-circle" style="color:#f44336;"></i> Clientes con deuda (por evento)</h4>
                         <table class="clients-table">
-                            <thead><tr><th>Cliente</th><th>Deuda Total</th><th>En viajes</th></tr></thead>
+                            <thead><tr><th>Cliente</th><th>Deuda Total</th><th>En eventos</th></tr></thead>
                             <tbody>
                             ${debtorClients.length > 0 ? debtorClients.map(c => `
                                 <tr>
@@ -4803,9 +5089,9 @@
                 <!-- Tables row 2 -->
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-bottom:30px;">
                     <div>
-                        <h4 style="margin-bottom:12px;"><i class="fas fa-fire" style="color:#f44336;"></i> Viajes más vendidos</h4>
+                        <h4 style="margin-bottom:12px;"><i class="fas fa-fire" style="color:#f44336;"></i> Eventos más vendidos</h4>
                         <table class="clients-table">
-                            <thead><tr><th>Viaje</th><th>Pasajeros</th><th>Ingresos</th></tr></thead>
+                            <thead><tr><th>Evento</th><th>Asistentes</th><th>Ingresos</th></tr></thead>
                             <tbody>
                             ${tripSales.length > 0 ? tripSales.map(t => `
                                 <tr>
@@ -4820,15 +5106,15 @@
                         </table>
                     </div>
                     <div>
-                        <h4 style="margin-bottom:12px;"><i class="fas fa-bus"></i> Transporte más usado</h4>
+                        <h4 style="margin-bottom:12px;"><i class="fas fa-bus"></i> Traslados más usado</h4>
                         <table class="clients-table">
-                            <thead><tr><th>Transporte</th><th>Viajes</th></tr></thead>
+                            <thead><tr><th>Traslados</th><th>Eventos</th></tr></thead>
                             <tbody>
                             ${topTransport.length > 0 ? topTransport.map(([t,c]) => `
                                 <tr>
                                     <td style="font-weight:600;">${t}</td>
                                     <td><span style="background:#e3f2fd;color:#1976d2;padding:3px 10px;border-radius:20px;font-weight:600;">${c}</span></td>
-                                </tr>`).join('') : '<tr><td colspan="2" style="text-align:center;color:var(--gray);padding:20px;">Agrega transporte en las fichas de viaje</td></tr>'}
+                                </tr>`).join('') : '<tr><td colspan="2" style="text-align:center;color:var(--gray);padding:20px;">Agrega transporte en las fichas de evento</td></tr>'}
                             </tbody>
                         </table>
 
@@ -4867,7 +5153,7 @@
                     <div>
                         <h4 style="margin-bottom:12px;"><i class="fas fa-tags"></i> Ingresos por Categoría</h4>
                         <table class="clients-table">
-                            <thead><tr><th>Categoría</th><th>Viajes</th><th>Pasajeros</th><th>Ingresos</th></tr></thead>
+                            <thead><tr><th>Categoría</th><th>Eventos</th><th>Asistentes</th><th>Ingresos</th></tr></thead>
                             <tbody>
                             ${Object.entries(catMap).length>0 ? Object.entries(catMap).sort((a,b)=>b[1].revenue-a[1].revenue).map(([cat,d]) => `
                                 <tr>
@@ -4875,7 +5161,7 @@
                                     <td>${d.trips}</td>
                                     <td>${d.clients}</td>
                                     <td style="color:#2e7d32;font-weight:600;">${formatCurrency(d.revenue)}</td>
-                                </tr>`).join('') : '<tr><td colspan="4" style="text-align:center;color:var(--gray);padding:20px;">Asigna categorías en las fichas de viaje</td></tr>'}
+                                </tr>`).join('') : '<tr><td colspan="4" style="text-align:center;color:var(--gray);padding:20px;">Asigna categorías en las fichas de evento</td></tr>'}
                             </tbody>
                         </table>
                     </div>
@@ -4895,7 +5181,7 @@
                 if (catCtx && Object.keys(catMap).length > 0) {
                     const catLabels = Object.keys(catMap);
                     const catData = catLabels.map(k => catMap[k].revenue);
-                    const colors = ['#047698','#4cc9f0','#4CAF50','#ff9800','#f44336','#9c27b0','#00bcd4','#ff5722','#795548','#607d8b'];
+                    const colors = ['#a0285a','#4cc9f0','#4CAF50','#ff9800','#f44336','#9c27b0','#00bcd4','#ff5722','#795548','#607d8b'];
                     new Chart(catCtx, {
                         type: 'doughnut',
                         data: { labels: catLabels, datasets: [{ data: catData, backgroundColor: colors.slice(0,catLabels.length), borderWidth: 2 }] },
@@ -4905,7 +5191,7 @@
                 if (payCtx && Object.keys(payMap).length > 0) {
                     const payLabels = Object.keys(payMap).map(k=>k.replace(/_/g,' ').toUpperCase());
                     const payData = Object.values(payMap).map(d=>d.count);
-                    const payColors = ['#047698','#4CAF50','#ff9800','#f44336','#9c27b0','#00bcd4','#ff5722'];
+                    const payColors = ['#a0285a','#4CAF50','#ff9800','#f44336','#9c27b0','#00bcd4','#ff5722'];
                     new Chart(payCtx, {
                         type: 'bar',
                         data: { labels: payLabels, datasets: [{ label:'Transacciones', data: payData, backgroundColor: payColors.slice(0,payLabels.length) }] },
@@ -5029,7 +5315,7 @@
             if (startDate || endDate) {
                 report += "FILTRO DE FECHAS\n";
                 report += "----------------\n";
-                if (startDate) report += `Fecha de inicio: ${formatDate(startDate)}\n`;
+                if (startDate) report += `Fecha del evento: ${formatDate(startDate)}\n`;
                 if (endDate) report += `Fecha de fin: ${formatDate(endDate)}\n`;
                 report += "\n";
             }
@@ -5049,7 +5335,7 @@
             
             report += "RESUMEN GENERAL\n";
             report += "---------------\n";
-            report += `Viajes Registrados: ${totalTrips}\n`;
+            report += `Eventos Registrados: ${totalTrips}\n`;
             report += `Clientes Totales: ${totalClients}\n`;
             report += `Ingresos Recaudados: ${formatCurrency(totalRevenue)}\n`;
             report += `Gastos Registrados: ${formatCurrency(totalExpenses)}\n`;
@@ -5057,7 +5343,7 @@
             
             const sortedTrips = [...filteredTrips].sort((a, b) => new Date(b.startDate) - new Date(a.startDate));
             
-            report += "ÚLTIMOS VIAJES\n";
+            report += "ÚLTIMOS EVENTOS\n";
             report += "--------------\n";
             
             if (sortedTrips.length > 0) {
@@ -5071,23 +5357,23 @@
                     const tripExpenses = trip.expenses ? trip.expenses.reduce((sum, expense) => sum + expense.amount, 0) : 0;
                     const tripNetProfit = totalPaid - tripExpenses;
                     
-                    report += `\nViaje: ${trip.name}\n`;
-                    report += `Destino: ${trip.destination}\n`;
+                    report += `\nEvento: ${trip.name}\n`;
+                    report += `Lugar: ${trip.destination}\n`;
                     report += `Fechas: ${formatDate(trip.startDate)} - ${formatDate(trip.endDate)}\n`;
                     report += `Precio por persona: ${formatCurrency(trip.price)}\n`;
                     report += `Número de clientes: ${clientsCount}\n`;
                     report += `Total recaudado: ${formatCurrency(totalPaid)}\n`;
                     report += `Total esperado: ${formatCurrency(totalExpected)}\n`;
                     report += `Total pendiente: ${formatCurrency(totalPending)}\n`;
-                    report += `Gastos del viaje: ${formatCurrency(tripExpenses)}\n`;
+                    report += `Gastos del evento: ${formatCurrency(tripExpenses)}\n`;
                     report += `Ganancia neta: ${formatCurrency(tripNetProfit)}\n`;
                 });
             } else {
-                report += "No hay viajes registrados\n";
+                report += "No hay eventos registrados\n";
             }
             
             report += `\nGenerado el: ${new Date().toLocaleString('es-MX')}\n`;
-            report += "Sistema de Gestión - Nómadas Tours\n";
+            report += "Sistema de Gestión - Paulett Soul Eventologist\n";
             
             const blob = new Blob([report], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
@@ -5114,7 +5400,7 @@
                     if (data.trips && Array.isArray(data.trips)) {
                         trips = data.trips;
                     } else {
-                        showNotification('El archivo no contiene datos de viajes válidos', 'error');
+                        showNotification('El archivo no contiene datos de eventos válidos', 'error');
                         return;
                     }
                     
@@ -5164,7 +5450,7 @@
                 let csv = 'Tipo,ID,Nombre,Detalles\n';
                 
                 trips.forEach(trip => {
-                    csv += `Viaje,${trip.id},"${trip.name}","Destino: ${trip.destination}, Fechas: ${trip.startDate} a ${trip.endDate}, Precio: ${trip.price}"\n`;
+                    csv += `Evento,${trip.id},"${trip.name}","Lugar: ${trip.destination}, Fechas: ${trip.startDate} a ${trip.endDate}, Precio: ${trip.price}"\n`;
                     
                     if (trip.clients) {
                         trip.clients.forEach(client => {
@@ -5467,12 +5753,12 @@
 
         function renderCatalogCard(t) {
             const isActive = (t.status||'activo') === 'activo';
-            const statusColor = isActive ? '#047698' : '#9e9e9e';
+            const statusColor = isActive ? '#a0285a' : '#9e9e9e';
             const providers = (t.providers||[]);
             const includes = (t.includes||[]);
             const excludes = (t.excludes||[]);
             const catColors = {Playa:'#0288d1',Ciudad:'#455a64',Aventura:'#e64a19',Cultural:'#7b1fa2',Naturaleza:'#2e7d32',Internacional:'#1565c0',Nacional:'#00838f',Económico:'#f57f17',Premium:'#ad1457'};
-            const catColor = catColors[t.category] || '#047698';
+            const catColor = catColors[t.category] || '#a0285a';
 
             return `
                 <div style="background:white;border-radius:14px;box-shadow:0 2px 16px rgba(0,0,0,.08);margin-bottom:18px;overflow:hidden;border:1px solid #f0f0f0;transition:box-shadow .2s;" onmouseenter="this.style.boxShadow='0 6px 28px rgba(0,0,0,.14)'" onmouseleave="this.style.boxShadow='0 2px 16px rgba(0,0,0,.08)'">
@@ -5502,12 +5788,12 @@
                         ${t.description ? `<p style="color:#555;font-size:0.9rem;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid #f5f5f5;">${t.description}</p>` : ''}
 
                         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:${(t.logistics||providers.length>0||includes.length>0)?'16px':'0'};">
-                            ${t.transport ? `<div style="background:#f8f9fa;border-radius:8px;padding:10px 12px;"><div style="font-size:0.72rem;color:var(--gray);font-weight:700;text-transform:uppercase;margin-bottom:3px;"><i class="fas fa-bus"></i> Transporte</div><div style="font-size:0.88rem;font-weight:500;">${t.transport}</div></div>` : ''}
-                            ${t.accommodation ? `<div style="background:#f8f9fa;border-radius:8px;padding:10px 12px;"><div style="font-size:0.72rem;color:var(--gray);font-weight:700;text-transform:uppercase;margin-bottom:3px;"><i class="fas fa-hotel"></i> Hospedaje</div><div style="font-size:0.88rem;font-weight:500;">${t.accommodation}</div></div>` : ''}
-                            ${t.meals ? `<div style="background:#f8f9fa;border-radius:8px;padding:10px 12px;"><div style="font-size:0.72rem;color:var(--gray);font-weight:700;text-transform:uppercase;margin-bottom:3px;"><i class="fas fa-utensils"></i> Alimentación</div><div style="font-size:0.88rem;font-weight:500;">${t.meals}</div></div>` : ''}
+                            ${t.transport ? `<div style="background:#f8f9fa;border-radius:8px;padding:10px 12px;"><div style="font-size:0.72rem;color:var(--gray);font-weight:700;text-transform:uppercase;margin-bottom:3px;"><i class="fas fa-bus"></i> Traslados</div><div style="font-size:0.88rem;font-weight:500;">${t.transport}</div></div>` : ''}
+                            ${t.accommodation ? `<div style="background:#f8f9fa;border-radius:8px;padding:10px 12px;"><div style="font-size:0.72rem;color:var(--gray);font-weight:700;text-transform:uppercase;margin-bottom:3px;"><i class="fas fa-hotel"></i> Venue / Salón</div><div style="font-size:0.88rem;font-weight:500;">${t.accommodation}</div></div>` : ''}
+                            ${t.meals ? `<div style="background:#f8f9fa;border-radius:8px;padding:10px 12px;"><div style="font-size:0.72rem;color:var(--gray);font-weight:700;text-transform:uppercase;margin-bottom:3px;"><i class="fas fa-utensils"></i> Catering / Menú</div><div style="font-size:0.88rem;font-weight:500;">${t.meals}</div></div>` : ''}
                         </div>
 
-                        ${t.logistics ? `<div style="background:#eef6fa;border-radius:8px;padding:12px 14px;margin-bottom:14px;border-left:3px solid #047698;"><div style="font-size:0.72rem;color:#047698;font-weight:700;text-transform:uppercase;margin-bottom:6px;"><i class="fas fa-route"></i> Itinerario / Logística</div><pre style="margin:0;white-space:pre-wrap;font-family:'Poppins',sans-serif;font-size:0.85rem;color:#444;line-height:1.6;">${t.logistics}</pre></div>` : ''}
+                        ${t.logistics ? `<div style="background:#eef6fa;border-radius:8px;padding:12px 14px;margin-bottom:14px;border-left:3px solid #a0285a;"><div style="font-size:0.72rem;color:#a0285a;font-weight:700;text-transform:uppercase;margin-bottom:6px;"><i class="fas fa-route"></i> Itinerario / Logística</div><pre style="margin:0;white-space:pre-wrap;font-family:'Poppins',sans-serif;font-size:0.85rem;color:#444;line-height:1.6;">${t.logistics}</pre></div>` : ''}
 
                         ${providers.length > 0 ? `<div style="margin-bottom:12px;"><span style="font-size:0.75rem;font-weight:700;color:var(--gray);text-transform:uppercase;display:block;margin-bottom:6px;"><i class="fas fa-handshake"></i> Proveedores</span>${providers.map(p=>`<span style="display:inline-block;background:#e3f2fd;color:#1565c0;padding:3px 10px;border-radius:14px;font-size:0.8rem;margin:2px;font-weight:500;">${p}</span>`).join('')}</div>` : ''}
 
@@ -5538,7 +5824,7 @@
 
 
         function showNewCatalogTripModal() {
-            document.getElementById('catalogTripModalTitle').textContent = 'Nueva Ficha de Viaje';
+            document.getElementById('catalogTripModalTitle').textContent = 'Nueva Ficha de Evento';
             document.getElementById('catalogTripForm').reset();
             document.getElementById('catalogIncludesContainer').innerHTML = '';
             document.getElementById('catalogExcludesContainer').innerHTML = '';
@@ -5567,7 +5853,7 @@
             const t = catalogTrips.find(c => c.id === id);
             if (!t) return;
             currentCatalogTripId = id;
-            document.getElementById('catalogTripModalTitle').textContent = 'Editar Ficha de Viaje';
+            document.getElementById('catalogTripModalTitle').textContent = 'Editar Ficha de Evento';
             document.getElementById('catName').value = t.name || '';
             document.getElementById('catDestination').value = t.destination || '';
             document.getElementById('catCategory').value = t.category || '';
@@ -5814,7 +6100,7 @@
             if (breakdown.length > 1) {
                 bkHTML = breakdown.map(b =>
                     '<div style="display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px dashed #eee;font-size:0.8rem;">' +
-                    '<span>' + b.desc + '</span><span style="color:#047698;">' + b.label + '</span></div>'
+                    '<span>' + b.desc + '</span><span style="color:#a0285a;">' + b.label + '</span></div>'
                 ).join('');
             }
 
@@ -5840,18 +6126,22 @@
             const suggestedEl = document.getElementById('catSuggestedPrice');
             if (!suggestedEl || !suggestedEl.textContent) return;
             // Parse value from formatted currency
+            // Parse MXN formatted string: remove currency symbols, spaces, commas
             const raw = suggestedEl.textContent.replace(/[^0-9.]/g, '');
-            document.getElementById('catPrice').value = parseFloat(raw).toFixed(2);
+            const parsed = parseFloat(raw);
+            if (!isNaN(parsed)) {
+                document.getElementById('catPrice').value = parsed.toFixed(2);
+            }
             showNotification('Precio sugerido aplicado', 'success');
         }
 
         // =============================================
-        // CARGAR CATÁLOGO EN FORMULARIO NUEVO VIAJE
+        // CARGAR CATÁLOGO EN FORMULARIO NUEVO EVENTO
         // =============================================
         function populateTripCatalogSelect() {
             const sel = document.getElementById('tripFromCatalog');
             if (!sel) return;
-            sel.innerHTML = '<option value="">-- Viaje nuevo / manual --</option>';
+            sel.innerHTML = '<option value="">-- Evento nuevo / manual --</option>';
             catalogTrips.forEach(t => {
                 const opt = document.createElement('option');
                 opt.value = t.id;
@@ -5870,7 +6160,7 @@
             const t = catalogTrips.find(c => c.id === id);
             if (!t) return;
 
-            document.getElementById('tripName').value = t.name;
+            document.getElementById('eventName').value = t.name;
             document.getElementById('tripDestination').value = t.destination;
             document.getElementById('tripDescription').value = t.promoText || t.description || '';
 
@@ -5888,15 +6178,15 @@
                 <strong><i class="fas fa-book-open"></i> Cargado: ${t.name}</strong>
                 ${t.price ? `<div style="margin-top:6px;"><strong style="color:#2e7d32;"><i class="fas fa-tag"></i> Precio sugerido: ${formatCurrency(t.price)} por persona</strong></div>` : ''}
                 ${t.duration ? `<div style="margin-top:4px;font-size:0.85rem;"><i class="fas fa-clock"></i> Duración: ${t.duration}</div>` : ''}
-                ${t.transport ? `<div style="font-size:0.85rem;"><i class="fas fa-bus"></i> Transporte: ${t.transport}</div>` : ''}
-                ${t.accommodation ? `<div style="font-size:0.85rem;"><i class="fas fa-hotel"></i> Hospedaje: ${t.accommodation}</div>` : ''}
+                ${t.transport ? `<div style="font-size:0.85rem;"><i class="fas fa-bus"></i> Traslados: ${t.transport}</div>` : ''}
+                ${t.accommodation ? `<div style="font-size:0.85rem;"><i class="fas fa-hotel"></i> Venue / Salón: ${t.accommodation}</div>` : ''}
                 ${includes ? `<div style="margin-top:8px;"><strong>Incluye:</strong> ${includes}</div>` : ''}
                 ${excludes ? `<div style="margin-top:4px;"><strong>No incluye:</strong> ${excludes}</div>` : ''}
             `;
         }
 
         // =============================================
-        // MODAL COMPARTIR VIAJE
+        // MODAL COMPARTIR EVENTO
         // =============================================
         let currentShareTripId = null;
         let currentShareTripData = null;
@@ -5952,8 +6242,8 @@
             let txt = '';
 
             if (getChecked('sh_name')) {
-                txt += (forWhatsApp ? '🌍 *' : '') + t.name + (forWhatsApp ? '*' : '') + nl;
-                txt += (forWhatsApp ? '📍 ' : 'Destino: ') + t.destination + nl;
+                txt += (forWhatsApp ? '📍 *' : '') + t.name + (forWhatsApp ? '*' : '') + nl;
+                txt += (forWhatsApp ? '📍 ' : 'Lugar: ') + t.destination + nl;
             }
             if (getChecked('sh_duration') && t.duration) txt += (forWhatsApp?'⏱ ':'Duración: ') + t.duration + nl;
             if (getChecked('sh_capacity') && t.capacity) txt += (forWhatsApp?'👥 ':'Capacidad: ') + t.capacity + ' personas' + nl;
@@ -5971,9 +6261,9 @@
                 txt += nl + sep + nl;
                 txt += (forWhatsApp?'🗺️ *ITINERARIO/LOGÍSTICA*':'ITINERARIO / LOGÍSTICA') + nl + t.logistics + nl;
             }
-            if (getChecked('sh_transport') && t.transport) txt += nl + (forWhatsApp?'🚌 *Transporte:* ':'Transporte: ') + t.transport + nl;
-            if (getChecked('sh_accommodation') && t.accommodation) txt += (forWhatsApp?'🏨 *Hospedaje:* ':'Hospedaje: ') + t.accommodation + nl;
-            if (getChecked('sh_meals') && t.meals) txt += (forWhatsApp?'🍽️ *Alimentación:* ':'Alimentación: ') + t.meals + nl;
+            if (getChecked('sh_transport') && t.transport) txt += nl + (forWhatsApp?'🚌 *Traslados:* ':'Traslados: ') + t.transport + nl;
+            if (getChecked('sh_accommodation') && t.accommodation) txt += (forWhatsApp?'🏨 *Venue / Salón:* ':'Venue / Salón: ') + t.accommodation + nl;
+            if (getChecked('sh_meals') && t.meals) txt += (forWhatsApp?'🍽️ *Catering / Menú:* ':'Catering / Menú: ') + t.meals + nl;
 
             if (getChecked('sh_includes') && (t.includes||[]).length > 0) {
                 txt += nl + sep + nl;
@@ -6030,14 +6320,14 @@
             if (at && at.expenses && at.expenses.length > 0 && getChecked('sh_expenses')) {
                 const total = at.expenses.reduce((s,e)=>s+e.amount,0);
                 txt += nl + sep + nl;
-                txt += (forWhatsApp?'💰 *GASTOS DEL VIAJE*':'GASTOS DEL VIAJE') + nl;
+                txt += (forWhatsApp?'💰 *GASTOS DEL EVENTO*':'GASTOS DEL EVENTO') + nl;
                 at.expenses.forEach(e => txt += '• ' + e.description + ': ' + formatCurrency(e.amount) + ' (' + e.category + ')' + nl);
                 txt += 'Total: ' + formatCurrency(total) + nl;
             }
 
             const expCovered = document.getElementById('shareExpensesCovered').value.trim();
             if (getChecked('sh_expenses_covered') && expCovered) {
-                txt += nl + (forWhatsApp?'✔️ *GASTOS CUBIERTOS POR EL VIAJE*':'GASTOS CUBIERTOS POR EL VIAJE') + nl + expCovered + nl;
+                txt += nl + (forWhatsApp?'✔️ *GASTOS CUBIERTOS POR EL EVENTO*':'GASTOS CUBIERTOS POR EL EVENTO') + nl + expCovered + nl;
             }
 
             if (getChecked('sh_notes') && t.notes) {
@@ -6045,7 +6335,7 @@
                 txt += (forWhatsApp?'📝 *NOTAS*':'NOTAS') + nl + t.notes + nl;
             }
 
-            const companyName = document.getElementById('companyName')?.value || 'Nómadas Tours';
+            const companyName = document.getElementById('companyName')?.value || 'Paulett Soul Eventologist';
             txt += nl + sep + nl;
             txt += (forWhatsApp?'— ':'') + companyName + (forWhatsApp?' 🌿':'') + nl;
 
@@ -6073,12 +6363,12 @@
             const w = window.open('', '_blank');
             const logoId = document.getElementById('gdriveLogo')?.value?.trim() || localStorage.getItem('nomadasLogoId') || '';
             const logoUrl = logoId ? 'https://drive.google.com/thumbnail?id=' + logoId + '&sz=w200' : '';
-            const companyName = document.getElementById('companyName')?.value || 'Nómadas Tours';
+            const companyName = document.getElementById('companyName')?.value || 'Paulett Soul Eventologist';
             w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + t.name + '</title>' +
                 '<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">' +
                 '<style>body{font-family:Poppins,sans-serif;padding:30px;max-width:800px;margin:0 auto;}' +
-                'h1{color:#047698;}pre{white-space:pre-wrap;line-height:1.7;font-family:inherit;font-size:0.95rem;}' +
-                '.header{display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#047698,#03637d);color:white;padding:20px;border-radius:10px;margin-bottom:25px;}' +
+                'h1{color:#a0285a;}pre{white-space:pre-wrap;line-height:1.7;font-family:inherit;font-size:0.95rem;}' +
+                '.header{display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#a0285a,#7d1f47);color:white;padding:20px;border-radius:10px;margin-bottom:25px;}' +
                 '.logo{height:55px;border-radius:8px;}' +
                 '@media print{body{padding:15px;}}</style></head><body>' +
                 '<div class="header">' + (logoUrl ? '<img src="'+logoUrl+'" class="logo" onerror="this.style.display=\'none\'">' : '') +
@@ -6215,14 +6505,14 @@
         function getQuoteData() {
             const logoId = document.getElementById('gdriveLogo')?.value?.trim() || localStorage.getItem('nomadasLogoId') || '';
             const logoUrl = logoId ? `https://drive.google.com/thumbnail?id=${logoId}&sz=w200` : '';
-            const companyName = document.getElementById('companyName').value || 'Nómadas Tours';
+            const companyName = document.getElementById('companyName').value || 'Paulett Soul Eventologist';
             const companyPhone = document.getElementById('companyPhone').value || '';
             const companyEmail = document.getElementById('companyEmail').value || '';
             const companyWebsite = document.getElementById('companyWebsite').value || '';
             const clientName = document.getElementById('quoteClientName').value || 'Cliente';
             const clientPhone = document.getElementById('quoteClientPhone').value || '';
             const quoteDate = document.getElementById('quoteDate').value;
-            const tripName = document.getElementById('quoteTripName').value || 'Viaje sin nombre';
+            const eventName = document.getElementById('quoteTripName').value || 'Evento sin nombre';
             const dates = document.getElementById('quoteDates').value || '';
             const persons = parseInt(document.getElementById('quotePersons').value) || 1;
             const pricePerPerson = parseFloat(document.getElementById('quotePricePerPerson').value) || 0;
@@ -6237,7 +6527,7 @@
             const discountAmount = subtotal * (discount/100);
             const total = subtotal - discountAmount;
             
-            return { logoUrl, companyName, companyPhone, companyEmail, companyWebsite, clientName, clientPhone, quoteDate, tripName, dates, persons, pricePerPerson, discount, discountAmount, subtotal, total, promoText, notes, includes, excludes };
+            return { logoUrl, companyName, companyPhone, companyEmail, companyWebsite, clientName, clientPhone, quoteDate, eventName, dates, persons, pricePerPerson, discount, discountAmount, subtotal, total, promoText, notes, includes, excludes };
         }
 
         function updateQuotePreview() {
@@ -6248,7 +6538,7 @@
             const html = `
                 <div class="quote-header-box">
                     <div style="display:flex;align-items:center;gap:15px;">
-                        ${d.logoUrl ? `<img src="${d.logoUrl}" alt="Logo" style="height:60px;border-radius:8px;background:white;padding:3px;" onerror="this.style.display='none'">` : '<div style="width:60px;height:60px;background:rgba(255,255,255,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;"><i class="fas fa-plane-departure" style="font-size:2rem;"></i></div>'}
+                        ${d.logoUrl ? `<img src="${d.logoUrl}" alt="Logo" style="height:60px;border-radius:8px;background:white;padding:3px;" onerror="this.style.display='none'">` : '<div style="width:60px;height:60px;background:rgba(255,255,255,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;"><i class="fas fa-star" style="font-size:2rem;"></i></div>'}
                         <div>
                             <div style="font-size:1.4rem;font-weight:700;">${d.companyName}</div>
                             ${d.companyPhone ? `<div style="opacity:0.85;font-size:0.9rem;"><i class="fas fa-phone"></i> ${d.companyPhone}</div>` : ''}
@@ -6269,11 +6559,11 @@
                     
                     ${d.promoText ? `<div style="background:#e3f2fd;border-radius:8px;padding:15px;margin-bottom:15px;border-left:4px solid #1976d2;font-style:italic;color:#333;">"${d.promoText}"</div>` : ''}
                     
-                    <div class="quote-section-title"><i class="fas fa-suitcase-rolling"></i> DETALLE DEL VIAJE</div>
+                    <div class="quote-section-title"><i class="fas fa-calendar-alt"></i> DETALLE DEL EVENTO</div>
                     <table style="width:100%;border-collapse:collapse;margin-bottom:15px;">
                         <tr style="background:#f8f9fa;">
-                            <td style="padding:10px;font-weight:600;border-bottom:1px solid #e9ecef;">Destino / Viaje</td>
-                            <td style="padding:10px;border-bottom:1px solid #e9ecef;">${d.tripName}</td>
+                            <td style="padding:10px;font-weight:600;border-bottom:1px solid #e9ecef;">Evento</td>
+                            <td style="padding:10px;border-bottom:1px solid #e9ecef;">${d.eventName}</td>
                         </tr>
                         ${d.dates ? `<tr><td style="padding:10px;font-weight:600;border-bottom:1px solid #e9ecef;background:#f8f9fa;">Fechas</td><td style="padding:10px;border-bottom:1px solid #e9ecef;">${d.dates}</td></tr>` : ''}
                         <tr style="background:#f8f9fa;">
@@ -6326,10 +6616,10 @@
             let phone = d.clientPhone.replace(/\D/g, '');
             if (!phone) { showNotification('Agrega el teléfono del cliente para enviar por WhatsApp', 'warning'); return; }
             if (phone.length === 10) phone = '52' + phone;
-            const msg = `✈️ *COTIZACIÓN - ${d.companyName}*\n\n` +
+            const msg = `🎉 *COTIZACIÓN - ${d.companyName}*\n\n` +
                 `Hola ${d.clientName}! 😊\n` +
                 `Te comparto la cotización para:\n\n` +
-                `🌍 *${d.tripName}*\n` +
+                `📍 *${d.eventName}*\n` +
                 (d.dates ? `📅 ${d.dates}\n` : '') +
                 `👥 ${d.persons} persona(s)\n` +
                 `💵 Precio por persona: ${formatCurrency(d.pricePerPerson)}\n` +
@@ -6343,7 +6633,7 @@
 
         function downloadQuotePDF() {
             const d = getQuoteData();
-            const safeName = (d.clientName + '_' + d.tripName).replace(/[^a-zA-Z0-9_]/g,'_');
+            const safeName = (d.clientName + '_' + d.eventName).replace(/[^a-zA-Z0-9_]/g,'_');
             
             const printContent = document.getElementById('quotePrintArea').innerHTML;
             const w = window.open('', '_blank');
@@ -6354,8 +6644,8 @@
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
                 <style>
                     body { font-family:'Poppins',sans-serif; margin:0; padding:0; }
-                    .quote-header-box { background:linear-gradient(135deg,#047698,#03637d); color:white; padding:25px 30px; display:flex; justify-content:space-between; align-items:center; gap:15px; }
-                    .quote-section-title { background:#047698; color:white; padding:8px 15px; font-weight:600; font-size:0.95rem; margin:15px 0 10px; border-radius:5px; }
+                    .quote-header-box { background:linear-gradient(135deg,#a0285a,#7d1f47); color:white; padding:25px 30px; display:flex; justify-content:space-between; align-items:center; gap:15px; }
+                    .quote-section-title { background:#a0285a; color:white; padding:8px 15px; font-weight:600; font-size:0.95rem; margin:15px 0 10px; border-radius:5px; }
                     .quote-include-item { display:flex; align-items:center; gap:8px; padding:5px 0; }
                     table { width:100%; border-collapse:collapse; }
                     @media print { body { -webkit-print-color-adjust:exact; } }
@@ -6428,7 +6718,7 @@
             };
             
             if (!formData.name || !formData.destination) {
-                showNotification('El nombre y destino son obligatorios', 'error');
+                showNotification('El nombre y lugar son obligatorios', 'error');
                 return;
             }
             
@@ -6436,17 +6726,17 @@
                 const idx = catalogTrips.findIndex(c => c.id === currentCatalogTripId);
                 if (idx !== -1) {
                     catalogTrips[idx] = { ...catalogTrips[idx], ...formData };
-                    showNotification('Ficha actualizada exitosamente', 'success');
+                    showNotification('Ficha de evento actualizada exitosamente', 'success');
                 }
             } else {
                 // Check for duplicate
                 const dup = catalogTrips.find(c => c.name.toLowerCase() === formData.name.toLowerCase() && c.destination.toLowerCase() === formData.destination.toLowerCase());
                 if (dup) {
-                    showNotification('Ya existe una ficha con ese nombre y destino', 'warning');
+                    showNotification('Ya existe una ficha con ese nombre y lugar', 'warning');
                     return;
                 }
                 catalogTrips.push({ id: generateId(), ...formData, createdAt: new Date().toISOString() });
-                showNotification('Ficha creada exitosamente', 'success');
+                showNotification('Ficha de evento creada exitosamente', 'success');
             }
             
             saveCatalogTrips();
@@ -6458,6 +6748,412 @@
         document.addEventListener('DOMContentLoaded', function() {
             loadSavedLogo();
         });
+
+        // =============================================
+        // HELPER: EVENT TYPE LABELS & EMOJIS
+        // =============================================
+        function getEventTypeLabel(type) {
+            const labels = { boda:'Boda', xv:'XV Años', cumpleanos:'Cumpleaños', propuesta:'Propuesta', aniversario:'Aniversario', corporativo:'Corporativo', bautizo:'Bautizo/Baby Shower', graduacion:'Graduación', otro:'Otro' };
+            return labels[type] || type;
+        }
+        function getEventTypeEmoji(type) {
+            const emojis = { boda:'💍', xv:'🎀', cumpleanos:'🎂', propuesta:'💑', aniversario:'🥂', corporativo:'🏢', bautizo:'👶', graduacion:'🎓', otro:'✨' };
+            return emojis[type] || '🎉';
+        }
+
+        // =============================================
+        // CALENDAR VIEW
+        // =============================================
+        let calYear = new Date().getFullYear();
+        let calMonth = new Date().getMonth();
+
+        function renderCalendar() {
+            const container = document.getElementById('calendarContainer');
+            const monthNames = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+            const today = new Date(); today.setHours(0,0,0,0);
+
+            const firstDay = new Date(calYear, calMonth, 1);
+            const lastDay = new Date(calYear, calMonth+1, 0);
+            const startOffset = (firstDay.getDay() + 6) % 7; // Mon start
+
+            let cells = '';
+            const dayLabels = ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
+            const dayHeaders = dayLabels.map(d => `<div class="cal-day-label">${d}</div>`).join('');
+
+            // Empty cells before month start
+            for (let i = 0; i < startOffset; i++) {
+                cells += `<div class="cal-cell other-month"></div>`;
+            }
+
+            for (let d = 1; d <= lastDay.getDate(); d++) {
+                const cellDate = new Date(calYear, calMonth, d);
+                cellDate.setHours(0,0,0,0);
+                const isToday = cellDate.getTime() === today.getTime();
+                // Find events on this date
+                const dayEvents = trips.filter(t => {
+                    const ts = new Date(t.startDate + 'T00:00:00');
+                    const te = new Date(t.endDate + 'T00:00:00');
+                    return cellDate >= ts && cellDate <= te;
+                });
+                const dayFiches = catalogTrips.filter(t => false); // catalog has no dates
+                let chips = dayEvents.map(t => `<div class="cal-event-chip ${t.completed?'completed':''}" onclick="editTrip('${t.id}')" title="${t.name}">${getEventTypeEmoji(t.eventType||'')} ${t.name}</div>`).join('');
+                cells += `<div class="cal-cell ${isToday?'today':''}"><div class="cal-date">${d}</div>${chips}</div>`;
+            }
+
+            // Fill remaining cells
+            const totalCells = startOffset + lastDay.getDate();
+            const remaining = (7 - totalCells % 7) % 7;
+            for (let i = 0; i < remaining; i++) cells += `<div class="cal-cell other-month"></div>`;
+
+            container.innerHTML = `
+                <div class="cal-header">
+                    <button class="btn btn-secondary btn-small" onclick="calNav(-1)"><i class="fas fa-chevron-left"></i></button>
+                    <h3>${monthNames[calMonth]} ${calYear}</h3>
+                    <button class="btn btn-secondary btn-small" onclick="calNav(1)"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="cal-grid">${dayHeaders}${cells}</div>
+            `;
+        }
+
+        function calNav(dir) {
+            calMonth += dir;
+            if (calMonth > 11) { calMonth = 0; calYear++; }
+            if (calMonth < 0) { calMonth = 11; calYear--; }
+            renderCalendar();
+        }
+
+        // =============================================
+        // CHECKLIST
+        // =============================================
+        let currentChecklistTripId = null;
+        const checklistTemplates = {
+            boda: ['Confirmar venue/salón','Contratar florería','Confirmar catering / menú','Contratar DJ / música en vivo','Contratar fotógrafo','Contratar video','Confirmar lista de invitados','Enviar invitaciones','Prueba de sonido','Coordinación de traslados','Confirmar decoración','Mesa de regalos','Confirmación de pago final','Ensayo de ceremonia','Lista de reproducción entregada'],
+            xv: ['Confirmar salón','Contratar vals principal','Confirmar chambelanes','Contratar fotógrafo','Contratar video','Confirmar catering','Diseñar invitaciones','Confirmar DJ','Decoración temática','Confirmar recuerdos','Confirmar pastel','Sesión de fotos previa','Lista de invitados final','Pago de venue','Coordinación de sorpresas'],
+            corporativo: ['Confirmar venue','Instalar equipo AV','Confirmar catering','Preparar credenciales','Confirmar ponentes/staff','Diseño de materiales','Confirmar estacionamiento','Prueba de presentaciones','Confirmar logística de transporte','Comunicación con asistentes','Decoración / branding','Firma de contrato','Pago anticipado','Lista de asistentes final'],
+            cumpleanos: ['Confirmar lugar','Contratar decoración','Confirmar pastel','Contratar entretenimiento','Enviar invitaciones','Confirmar catering','Comprar recuerdos','Confirmar música','Lista de invitados final','Pago de servicios']
+        };
+
+        function openChecklist(tripId) {
+            currentChecklistTripId = tripId;
+            const trip = trips.find(t => t.id === tripId);
+            if (!trip) return;
+            document.getElementById('checklistModalTitle').innerHTML = `<i class="fas fa-tasks"></i> Checklist — ${trip.name}`;
+            renderChecklist(trip);
+            document.getElementById('checklistModal').style.display = 'block';
+        }
+
+        function renderChecklist(trip) {
+            const items = trip.checklist || [];
+            const container = document.getElementById('checklistContainer');
+            const progress = document.getElementById('checklistProgress');
+            if (items.length === 0) {
+                container.innerHTML = '<div class="empty-state" style="padding:30px 0;"><i class="fas fa-tasks"></i><p>No hay tareas aún. Agrega una o carga una plantilla.</p></div>';
+                progress.textContent = '';
+                return;
+            }
+            const done = items.filter(i => i.done).length;
+            const pct = Math.round((done/items.length)*100);
+            const today = new Date(); today.setHours(0,0,0,0);
+            container.innerHTML = items.map((item, idx) => {
+                const isOverdue = item.due && !item.done && new Date(item.due+'T00:00:00') < today;
+                return `<div class="checklist-item ${item.done?'done':''}">
+                    <input type="checkbox" ${item.done?'checked':''} onchange="toggleChecklistItem(${idx})">
+                    <span class="chk-text">${item.text}</span>
+                    ${item.due ? `<span class="chk-due ${isOverdue?'overdue':''}">${item.due}</span>` : ''}
+                    <div class="chk-actions">
+                        <button class="btn btn-small btn-danger" onclick="deleteChecklistItem(${idx})" style="padding:4px 8px;font-size:0.75rem;"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>`;
+            }).join('');
+            progress.innerHTML = `<span>${done}/${items.length} tareas completadas</span><span style="font-weight:700;color:${pct===100?'var(--success)':'var(--primary)'};">${pct}%</span>`;
+        }
+
+        function addChecklistItem() {
+            const text = document.getElementById('newChecklistItem').value.trim();
+            if (!text) return;
+            const trip = trips.find(t => t.id === currentChecklistTripId);
+            if (!trip) return;
+            if (!trip.checklist) trip.checklist = [];
+            trip.checklist.push({ text, due: document.getElementById('newChecklistDue').value || null, done: false });
+            document.getElementById('newChecklistItem').value = '';
+            document.getElementById('newChecklistDue').value = '';
+            saveData();
+            renderChecklist(trip);
+        }
+
+        function toggleChecklistItem(idx) {
+            const trip = trips.find(t => t.id === currentChecklistTripId);
+            if (!trip || !trip.checklist) return;
+            trip.checklist[idx].done = !trip.checklist[idx].done;
+            saveData();
+            renderChecklist(trip);
+        }
+
+        function deleteChecklistItem(idx) {
+            const trip = trips.find(t => t.id === currentChecklistTripId);
+            if (!trip || !trip.checklist) return;
+            trip.checklist.splice(idx, 1);
+            saveData();
+            renderChecklist(trip);
+        }
+
+        function loadChecklistTemplate(type) {
+            const trip = trips.find(t => t.id === currentChecklistTripId);
+            if (!trip) return;
+            if (!trip.checklist) trip.checklist = [];
+            const tpl = checklistTemplates[type] || [];
+            tpl.forEach(text => { if (!trip.checklist.find(i => i.text === text)) trip.checklist.push({ text, due: null, done: false }); });
+            saveData();
+            renderChecklist(trip);
+            showNotification('Plantilla cargada', 'success');
+        }
+
+        // =============================================
+        // PHOTO GALLERY
+        // =============================================
+        let currentGalleryTripId = null;
+
+        function openGallery(tripId) {
+            currentGalleryTripId = tripId;
+            const trip = trips.find(t => t.id === tripId);
+            if (!trip) return;
+            document.getElementById('galleryModalTitle').innerHTML = `<i class="fas fa-images"></i> Galería — ${trip.name}`;
+            renderGallery(trip);
+            document.getElementById('galleryModal').style.display = 'block';
+        }
+
+        function handleGalleryUpload(event) {
+            const trip = trips.find(t => t.id === currentGalleryTripId);
+            if (!trip) return;
+            if (!trip.gallery) trip.gallery = [];
+            const files = Array.from(event.target.files);
+            let loaded = 0;
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    trip.gallery.push({ src: e.target.result, name: file.name, addedAt: new Date().toISOString() });
+                    loaded++;
+                    if (loaded === files.length) { saveData(); renderGallery(trip); showNotification(loaded + ' foto(s) agregada(s)', 'success'); }
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function renderGallery(trip) {
+            const container = document.getElementById('galleryContainer');
+            const gallery = trip.gallery || [];
+            if (gallery.length === 0) {
+                container.innerHTML = '<div class="empty-state" style="padding:30px 0;width:100%;"><i class="fas fa-images"></i><p>Sin fotos aún. Sube imágenes del evento.</p></div>';
+                return;
+            }
+            container.innerHTML = gallery.map((img, idx) => `
+                <div style="position:relative;">
+                    <img src="${img.src}" style="width:120px;height:120px;object-fit:cover;border-radius:10px;cursor:pointer;border:2px solid #e9ecef;" onclick="viewFullImage('${idx}','${trip.id}')" title="${img.name}">
+                    <button onclick="deleteGalleryImage(${idx})" style="position:absolute;top:4px;right:4px;background:rgba(244,67,54,.85);color:white;border:none;border-radius:50%;width:22px;height:22px;cursor:pointer;font-size:0.75rem;display:flex;align-items:center;justify-content:center;">×</button>
+                </div>
+            `).join('');
+        }
+
+        function deleteGalleryImage(idx) {
+            const trip = trips.find(t => t.id === currentGalleryTripId);
+            if (!trip || !trip.gallery) return;
+            trip.gallery.splice(idx, 1);
+            saveData();
+            renderGallery(trip);
+        }
+
+        function viewFullImage(idx, tripId) {
+            const trip = trips.find(t => t.id === tripId);
+            if (!trip || !trip.gallery) return;
+            const img = trip.gallery[idx];
+            const w = window.open('', '_blank');
+            w.document.write(`<html><body style="margin:0;background:#000;display:flex;align-items:center;justify-content:center;height:100vh;"><img src="${img.src}" style="max-width:100%;max-height:100vh;object-fit:contain;"></body></html>`);
+        }
+
+        // =============================================
+        // PAYMENT REMINDER WHATSAPP
+        // =============================================
+        function sendPaymentReminder(tripId, tripName, event) {
+            event.stopPropagation();
+            const btn = event.currentTarget;
+            const phone = btn.getAttribute('data-phone').replace(/\D/g,'');
+            const name = btn.getAttribute('data-name');
+            const pending = parseFloat(btn.getAttribute('data-pending'));
+            if (!phone) { showNotification('El cliente no tiene teléfono registrado', 'warning'); return; }
+            const finalPhone = phone.length === 10 ? '52' + phone : phone;
+            const msg = `Hola ${name}! 💫\n\nTe recordamos que tienes un saldo pendiente de *${formatCurrency(pending)}* para el evento *${tripName}*.\n\nPor favor contáctanos para coordinar tu pago. ¡Gracias! 🙌\n\n— *Paulett Soul Eventologist*`;
+            window.open(`https://wa.me/${finalPhone}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // =============================================
+        // LEADS / PIPELINE
+        // =============================================
+        let leads = JSON.parse(localStorage.getItem('pse_leads')) || [];
+        let editingLead = false;
+        let currentLeadId = null;
+
+        function saveLeads() { localStorage.setItem('pse_leads', JSON.stringify(leads)); }
+
+        const stageConfig = {
+            interesado: { label: 'Interesado', color: '#1976d2', bg: '#e3f2fd' },
+            cotizado:   { label: 'Cotizado',   color: '#f57c00', bg: '#fff8e1' },
+            negociando: { label: 'Negociando', color: '#c2185b', bg: '#fce4ec' },
+            cerrado:    { label: 'Cerrado/Ganado', color: '#2e7d32', bg: '#e8f5e9' },
+            perdido:    { label: 'Perdido',    color: '#b71c1c', bg: '#ffebee' }
+        };
+
+        function showNewLeadModal() {
+            editingLead = false;
+            currentLeadId = null;
+            document.getElementById('leadModalTitle').innerHTML = '<i class="fas fa-funnel-dollar"></i> Nuevo Lead';
+            document.getElementById('leadForm').reset();
+            document.getElementById('leadModal').style.display = 'block';
+        }
+
+        function editLead(id) {
+            const lead = leads.find(l => l.id === id);
+            if (!lead) return;
+            editingLead = true;
+            currentLeadId = id;
+            document.getElementById('leadModalTitle').innerHTML = '<i class="fas fa-edit"></i> Editar Lead';
+            document.getElementById('leadName').value = lead.name;
+            document.getElementById('leadPhone').value = lead.phone || '';
+            document.getElementById('leadEventType').value = lead.eventType || '';
+            document.getElementById('leadStage').value = lead.stage;
+            document.getElementById('leadValue').value = lead.value || '';
+            document.getElementById('leadEventDate').value = lead.eventDate || '';
+            document.getElementById('leadNotes').value = lead.notes || '';
+            document.getElementById('leadModal').style.display = 'block';
+        }
+
+        function deleteLead(id) {
+            if (!confirm('¿Eliminar este lead?')) return;
+            leads = leads.filter(l => l.id !== id);
+            saveLeads();
+            renderPipeline();
+        }
+
+        function closeLeadModal() {
+            document.getElementById('leadModal').style.display = 'none';
+            document.getElementById('leadForm').reset();
+        }
+
+        function renderPipeline() {
+            const board = document.getElementById('pipelineBoard');
+            const kpiBar = document.getElementById('leadsKpiBar');
+            if (!board) return;
+
+            const stages = ['interesado', 'cotizado', 'negociando', 'cerrado', 'perdido'];
+            const totalLeads = leads.length;
+            const totalValue = leads.filter(l=>l.stage!=='perdido').reduce((s,l) => s+(parseFloat(l.value)||0), 0);
+            const closedValue = leads.filter(l=>l.stage==='cerrado').reduce((s,l) => s+(parseFloat(l.value)||0), 0);
+            const convRate = totalLeads > 0 ? Math.round((leads.filter(l=>l.stage==='cerrado').length/totalLeads)*100) : 0;
+
+            kpiBar.innerHTML = `
+                <div class="kpi-card blue" style="flex:1;min-width:120px;"><div class="kpi-value">${totalLeads}</div><div class="kpi-label">Total Leads</div></div>
+                <div class="kpi-card" style="flex:1;min-width:120px;border-top-color:#a0285a;"><div class="kpi-value">${formatCurrency(totalValue)}</div><div class="kpi-label">Pipeline Value</div></div>
+                <div class="kpi-card green" style="flex:1;min-width:120px;"><div class="kpi-value">${formatCurrency(closedValue)}</div><div class="kpi-label">Cerrado</div></div>
+                <div class="kpi-card ${convRate>=50?'green':convRate>=25?'orange':'red'}" style="flex:1;min-width:120px;"><div class="kpi-value">${convRate}%</div><div class="kpi-label">Conversión</div></div>
+            `;
+
+            board.innerHTML = stages.map(stage => {
+                const cfg = stageConfig[stage];
+                const stageleads = leads.filter(l => l.stage === stage);
+                const stageValue = stageleads.reduce((s,l) => s+(parseFloat(l.value)||0), 0);
+                const cards = stageleads.map(lead => {
+                    const today = new Date(); today.setHours(0,0,0,0);
+                    const eventDate = lead.eventDate ? new Date(lead.eventDate+'T00:00:00') : null;
+                    const daysLeft = eventDate ? Math.round((eventDate - today) / 86400000) : null;
+                    return `<div class="pipeline-card" style="border-left-color:${cfg.color};">
+                        <span class="lead-badge ${stage}">${cfg.label}</span>
+                        <div class="lead-name">${lead.name}</div>
+                        <div class="lead-event">${lead.eventType ? getEventTypeEmoji(lead.eventType)+' '+getEventTypeLabel(lead.eventType) : '—'}</div>
+                        ${lead.value ? `<div class="lead-value">${formatCurrency(parseFloat(lead.value))}</div>` : ''}
+                        ${eventDate ? `<div class="lead-date"><i class="fas fa-calendar"></i> ${lead.eventDate} ${daysLeft !== null ? (daysLeft>0?`(${daysLeft} días)`:'(¡Hoy!)'):''}  </div>` : ''}
+                        ${lead.notes ? `<div style="font-size:0.75rem;color:var(--gray);margin-top:4px;border-top:1px solid #f0f0f0;padding-top:4px;">${lead.notes.substring(0,80)}${lead.notes.length>80?'...':''}</div>` : ''}
+                        <div style="display:flex;gap:4px;margin-top:8px;flex-wrap:wrap;">
+                            <button class="btn btn-small btn-secondary" style="padding:4px 8px;font-size:0.75rem;" onclick="editLead('${lead.id}')"><i class="fas fa-edit"></i></button>
+                            ${lead.phone ? `<a href="https://wa.me/${(lead.phone.replace(/\D/g,'').length===10?'52':'')+lead.phone.replace(/\D/g,'')}" target="_blank" class="btn btn-small btn-whatsapp" style="padding:4px 8px;font-size:0.75rem;"><i class="fab fa-whatsapp"></i></a>` : ''}
+                            <button class="btn btn-small btn-danger" style="padding:4px 8px;font-size:0.75rem;" onclick="deleteLead('${lead.id}')"><i class="fas fa-trash"></i></button>
+                            ${stage !== 'cerrado' ? `<select style="font-size:0.72rem;padding:3px 5px;border:1px solid #e9ecef;border-radius:5px;font-family:'Poppins',sans-serif;" onchange="changeLeadStage('${lead.id}',this.value)">
+                                <option value="">Mover a...</option>
+                                ${stages.filter(s=>s!==stage).map(s=>`<option value="${s}">${stageConfig[s].label}</option>`).join('')}
+                            </select>` : ''}
+                        </div>
+                    </div>`;
+                }).join('') || `<div style="text-align:center;padding:20px;color:var(--gray);font-size:0.8rem;">Sin leads</div>`;
+
+                return `<div class="pipeline-col">
+                    <div class="pipeline-col-title" style="color:${cfg.color};">
+                        ${cfg.label.toUpperCase()} <span style="background:${cfg.bg};color:${cfg.color};padding:2px 8px;border-radius:20px;font-size:0.75rem;">${stageleads.length}${stageValue>0?' · '+formatCurrency(stageValue):''}</span>
+                    </div>
+                    ${cards}
+                </div>`;
+            }).join('');
+        }
+
+        function changeLeadStage(id, newStage) {
+            if (!newStage) return;
+            const lead = leads.find(l => l.id === id);
+            if (!lead) return;
+            lead.stage = newStage;
+            saveLeads();
+            renderPipeline();
+            showNotification('Lead movido a ' + stageConfig[newStage].label, 'success');
+        }
+
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const data = {
+                name: document.getElementById('leadName').value.trim(),
+                phone: document.getElementById('leadPhone').value.trim(),
+                eventType: document.getElementById('leadEventType').value,
+                stage: document.getElementById('leadStage').value,
+                value: parseFloat(document.getElementById('leadValue').value) || 0,
+                eventDate: document.getElementById('leadEventDate').value,
+                notes: document.getElementById('leadNotes').value.trim()
+            };
+            if (!data.name) { showNotification('El nombre es requerido', 'error'); return; }
+            if (editingLead && currentLeadId) {
+                const idx = leads.findIndex(l => l.id === currentLeadId);
+                if (idx !== -1) { leads[idx] = { ...leads[idx], ...data }; showNotification('Lead actualizado', 'success'); }
+            } else {
+                leads.push({ id: generateId(), ...data, createdAt: new Date().toISOString() });
+                showNotification('Lead creado', 'success');
+            }
+            saveLeads();
+            closeLeadModal();
+            renderPipeline();
+        });
+
+        // =============================================
+        // REPORTS: ADD EVENT TYPE ANALYSIS
+        // =============================================
+        function getEventTypeSummary(fTrips) {
+            const etMap = {};
+            fTrips.forEach(t => {
+                const key = t.eventType || 'otro';
+                if (!etMap[key]) etMap[key] = { count:0, revenue:0, clients:0 };
+                etMap[key].count++;
+                etMap[key].revenue += (t.clients||[]).reduce((s,c)=>(c.payments||[]).reduce((ps,p)=>ps+p.amount,ps),0);
+                etMap[key].clients += (t.clients||[]).length;
+            });
+            return etMap;
+        }
+
+        // =============================================
+        // PATCH showSection for leads/calendar init
+        // =============================================
+        (function() {
+            const _orig = showSection;
+            showSection = function(sectionId) {
+                _orig(sectionId);
+                if (sectionId === 'leads') renderPipeline();
+            };
+        })();
+
+        // leads initialized on showSection call
+
     </script>
 </body>
 </html>
