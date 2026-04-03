@@ -30,7 +30,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #080205 0%, #080205 100%);
+            background: linear-gradient(135deg, #a0285a 0%, #7d1f47 100%);
             min-height: 100vh;
             color: var(--dark);
         }
@@ -6036,55 +6036,40 @@
             container.appendChild(div);
         }
 
-       function calcSuggestedPrice() {
-    const container = document.getElementById('catCostsContainer');
-    if (!container) return;
+        function calcSuggestedPrice() {
+            const container = document.getElementById('catCostsContainer');
+            const rows = container.querySelectorAll('div');
+            const persons = parseInt(document.getElementById('catPersonsEstimate').value) || 1;
+            let totalCostPerPerson = 0;
+            let breakdown = [];
 
-    const rows = container.querySelectorAll('div');
-    const persons = parseInt(document.getElementById('catPersonsEstimate')?.value) || 1;
-    const marginPercent = parseFloat(document.getElementById('catMargin')?.value) || 0;
+            rows.forEach(row => {
+                const inputs = row.querySelectorAll('input');
+                const select = row.querySelector('select');
+                if (inputs.length < 2 || !select) return;
+                const desc = inputs[0].value || 'Costo';
+                const amt = parseFloat(inputs[1].value) || 0;
+                const tipo = select.value;
+                if (amt <= 0) return;
 
-    let totalCostPerPerson = 0;
+                let cpp = 0, label = '';
+                if (tipo === 'total') {
+                    cpp = amt / persons;
+                    label = formatCurrency(amt) + ' ÷ ' + persons + ' pax = ' + formatCurrency(cpp) + '/persona';
+                } else if (tipo === 'persona') {
+                    cpp = amt;
+                    label = formatCurrency(amt) + '/persona';
+                } else if (tipo === 'servicio') {
+                    cpp = amt / persons;
+                    label = formatCurrency(amt) + '/servicio ÷ ' + persons + ' pax = ' + formatCurrency(cpp) + '/persona';
+                }
+                totalCostPerPerson += cpp;
+                breakdown.push({ desc, cpp, label });
+            });
 
-    rows.forEach(row => {
-        const inputs = row.querySelectorAll('input');
-        const select = row.querySelector('select');
-        if (inputs.length < 2 || !select) return;
-
-        const amt = parseFloat(inputs[1].value) || 0;
-        const tipo = select.value;
-        if (amt <= 0) return;
-
-        let cpp = 0;
-
-        if (tipo === 'total' || tipo === 'servicio') {
-            cpp = amt / persons;
-        } else if (tipo === 'persona') {
-            cpp = amt;
-        }
-
-        totalCostPerPerson += cpp;
-    });
-
-    // ✅ cálculos correctos
-    const totalCost = totalCostPerPerson * persons;
-    const totalMargin = totalCost * (marginPercent / 100);
-    const finalPricePerPerson = (totalCost + totalMargin) / persons;
-
-    // 🔥 IMPORTANTE: mostrar resultados (ajusta IDs a los tuyos)
-    const costoEl = document.getElementById('costoPorPersona');
-    const precioEl = document.getElementById('precioSugerido');
-    const margenEl = document.getElementById('margenTotal');
-
-    if (costoEl) costoEl.innerText = formatCurrency(totalCostPerPerson);
-    if (precioEl) precioEl.innerText = formatCurrency(finalPricePerPerson);
-    if (margenEl) margenEl.innerText = formatCurrency(totalMargin);
-}
-            const marginPercent = parseFloat(document.getElementById('catMargin').value) || 0;
-
-const totalCost = totalCostPerPerson * persons;
-const totalMargin = totalCost * (marginPercent / 100);
-const finalPricePerPerson = (totalCost + totalMargin) / persons;
+            const margin = parseFloat(document.getElementById('catMargin').value) || 0;
+            const withMargin = margin < 100 ? totalCostPerPerson / (1 - margin / 100) : totalCostPerPerson;
+            const totalGroupCost = totalCostPerPerson * persons;
 
             // Collect active taxes
             const taxRows = document.querySelectorAll('#catTaxesContainer .tax-row');
